@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>CoffeeScript</title>
+	<title>Presentation</title>
 
 	<meta name="description" content="">
 	<meta name="author" content="Alexander Ivanov - Karamfil">
@@ -34,7 +34,12 @@
 
 <div class="reveal">
 	<div class="slides">
-		<section data-markdown="slides.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
+		
+		<section data-markdown="slides/livescript.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
+		<script>
+			var current_slide_file = location.search.substr(1);
+			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = 'slides/' + current_slide_file + '.md'; }
+		</script>
 	</div>
 </div>
 
@@ -42,8 +47,10 @@
 <script src="js/reveal.min.js"></script>
 
 <script>
+	// return
 	// https://github.com/hakimel/reveal.js#configuration
-	Reveal.initialize({
+	Reveal.initialize(
+	{
 		// width: 800,
 		// height: 500,
 		maxScale: 2.0,
@@ -51,7 +58,7 @@
 		history			: true,
 		// center			: false,
 		// rollingLinks	: false,
-		mouseWheel		: true,
+		// mouseWheel		: true,
 		
 		transition		: 'linear', // default/cube/page/concave/zoom/linear/fade/none
 		transitionSpeed	: 'fast', // default/fast/slow
