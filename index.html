@@ -33,21 +33,35 @@
 <body>
 
 <div class="reveal">
+	<pre><code id="message-log" class="javascript" style="z-index: 100"></code></pre>
+	
 	<div class="slides">
 		
-		<section data-markdown="slides/livescript.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
+		<section data-markdown="slides/slides.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
 		<script>
 			var current_slide_file = location.search.substr(1);
 			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = 'slides/' + current_slide_file + '.md'; }
 		</script>
 	</div>
+	
 </div>
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.min.js"></script>
 
 <script>
-	// return
+	message_log = document.getElementById('message-log');
+	message_log.style.display = 'none';
+	message_log.onclick = function(){ message_log.style.display = 'none'; };
+	message_log.log = function(log)
+	{
+		this.innerHTML = log
+		this.style.display = 'block';
+		hljs.highlightBlock(this)
+	}
+	document.body.onkeyup = function(ev){ if(ev.ctrlKey && ev.keyCode == 32){ message_log.style.display = 'none'; } };
+	
+	
 	// https://github.com/hakimel/reveal.js#configuration
 	Reveal.initialize(
 	{
@@ -61,17 +75,18 @@
 		// mouseWheel		: true,
 		
 		transition		: 'linear', // default/cube/page/concave/zoom/linear/fade/none
-		transitionSpeed	: 'fast', // default/fast/slow
+		// transitionSpeed	: 'fast', // default/fast/slow
 		
 		dependencies: [
-			// { src: 'lib/js/classList.js'			, condition: function() { return !document.body.classList; } },
-			{ src: 'plugin/markdown/marked.js'		, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-			{ src: 'plugin/markdown/markdown.js'	, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-			{ src: 'plugin/highlight/highlight.js'	, async: false, callback: function() { hljs.initHighlightingOnLoad(); } },
-			// { src: 'plugin/zoom-js/zoom.js'		, async: true, condition: function() { return !!document.body.classList; } },
-			{ src: 'plugin/notes/notes.js'			, async: false, condition: function() { return !!document.body.classList; } }
-			// { src: 'plugin/search/search.js'		, async: true, condition: function() { return !!document.body.classList; } }
-			// { src: 'plugin/remotes/remotes.js'	, async: true, condition: function() { return !!document.body.classList; } }
+			// { src: 'lib/js/classList.js'				, condition: function() { return !document.body.classList; } },
+			{ src: 'plugin/markdown/marked.js'			, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/markdown/markdown.js'		, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/highlight/highlight.js'		, async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'plugin/livescript/livescript.js'	, async: true,condition: function() { return true; } },
+			// { src: 'plugin/zoom-js/zoom.js'			, async: true, condition: function() { return !!document.body.classList; } },
+			{ src: 'plugin/notes/notes.js'				, async: true, condition: function() { return !!document.body.classList; } }
+			// { src: 'plugin/search/search.js'			, async: true, condition: function() { return !!document.body.classList; } }
+			// { src: 'plugin/remotes/remotes.js'		, async: true, condition: function() { return !!document.body.classList; } }
 		]
 	});
 </script>
