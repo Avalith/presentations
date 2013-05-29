@@ -14,9 +14,7 @@
 # What is CoffeeScript
 
 
-
 ## Coffee ain't so cool anymore
-
 
 
 ## And the winner is...
@@ -50,19 +48,26 @@
 
 
 
-# Syntax - Basic
+# Syntax
+
+
+## Code Blocks
 * blocks delimited indentation
 * newlines are used to terminate statements
 * semicolons for one-line statements
 
 
 
-# Syntax - Literals
+# Literals
 
 
 ## Comment
 * `# single line`
 * `/* multiline */`
+
+
+## Variable Names
+# TODO
 
 
 ## Numbers
@@ -130,10 +135,6 @@ to multiple lines'
  regexp      # comments are stripped
 //g
 ```
-
-
-## Variable Names
-# TODO
 
 
 ## Objects
@@ -239,7 +240,7 @@ x = 5
 
 
 
-# Syntax - Operators
+# Operators
 
 
 ## Number - Starndard Math
@@ -528,45 +529,156 @@ plus 2 4           #=> 6
 
 
 
-## Operators 
+# Functions
+
+
+## Defining
 ```livescript
+->    # an empty function
+
+(x, y) -> x + y
+
+mul = (x, y) ->
+	x * y
+
+f = !-> 2
+g = !(x) -> x + 2
+```
+
+
+## Named Functions
+```livescript
+function f
+	...
+
+function f then 2
+
+!function f then 2
+```
+
+
+## Calling
+<aside class="notes">you can omit the comma separating the arguments if the preceding item is not callable, just like in arrays.</aside>
+
+```livescript
+func()
+func!
+func 1, 2
+func 1 2
+
+$ \h1 .find \a .text!
+
+do -> 3 + 2    #=> 5
+```
+
+
+## Arguments
+```livescript
+(x = 4, y = 3) -> x + y
+
+f = ({x, y}) -> "#x,#y"
+f y: 2, x: 3    #=> '3,2'
+
+f = (@text) -> this
+
+obj
+(obj.age = 1) -> obj
+
+f = -> it + 2
+f = -> &0 + 2
+```
+
+
+## Splats...
+```livescript
+f = (x, ...ys) -> 
+f = (x, ...ys, last) -> 
+
+g = (a, b, c, d) -> f ...
+
+f ...[1, 2, 3, 4]
+```
+
+
+## Unary Arguments
+```livescript
+f = (!!x) -> x
+f = (+x) -> x
+f = (^^x) -> x
+```
+
+
+## Context Creation
+```livescript
+obj = new
+	@x = 10
+	@
+
+let $ = jQuery
+	$.isArray [] #=> true
+
+x = let @ = a: 1, b: 2
+	@b ^ 3
+```
+
+
+## Bound Functions
+```livescript
+obj = new
+	@x      = 10
+	@normal = -> @x
+	@bound  = ~> @x
+	
+	~function f then @x
+```
+
+
+## Currying
+```livescript
+multiply = (x, y) --> x * y
+multiply 2, 3     #=> 6 (normal use works as expected)
+double = multiply 2
+double 5          #=> 10
+
+multiply = (x, y) ~~> x * y
+```
+
+
+## Shorthand Access/Call
+```livescript
+map (.length), <[ hello there you ]>
+filter (.length < 4), <[ hello there you ]>
+
+obj = one: 1, two: 2, three: 3
+map (obj.), <[ one three ]>
+```
+
+
+## Partial Application
+```livescript
+filter-nums = filter _, [1 to 5]
+filter-nums even      #=> [2,4]
+filter-nums odd       #=> [1,3,5]
+filter-nums (< 3)     #=> [1,2]
+
+[1 2 3] |> _.reduce _, (+), 0   #=> 12
 ```
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Syntax - Functions
-
-
-
-
-# Syntax - Conditionals
+# Conditionals
 if..., switch
 
 
 
-# Syntax - Loops and Coprehensions
+# Loops and
+# Coprehensions
 
 
 
-# Syntax - Assignment
+# Assignment
 
 
 
+# OOP
 
-# Syntax - OOP
-
-string = \boom if window?
