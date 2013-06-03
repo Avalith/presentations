@@ -610,6 +610,10 @@ f = (x, ...ys, last) ->
 g = (a, b, c, d) -> f ...
 
 f ...[1, 2, 3, 4]
+
+f = -> call-something-else ...
+
+posts['op' ...'replies'] = thread
 ```
 
 
@@ -920,6 +924,7 @@ for ever
 
 ## Comprehensions
 <aside class="notes">List comprehensions always produce a list. Nested comprehensions produce a flattened list. </aside>
+
 ```livescript
 [x + 1 for x to 10 by 2 when x isnt 4]   #=> [1,3,7,9,11]
 
@@ -1099,6 +1104,7 @@ list[*-1]     #=> 6
 
 ## Semiautovivification
 <aside class="notes">Ensures that the property exists as an object or as an array</aside>
+
 ```livescript
 x = [{key: \hello}, [\world]]
 q = x.{}0   #=> {"key":"hello"}
@@ -1176,5 +1182,79 @@ finally
 ```
 
 
+
 # OOP
 
+
+## Classes
+```livescript
+
+```
+
+
+## Properties
+```livescript
+
+```
+
+
+## Static Properties
+```livescript
+
+```
+
+
+## Private Static Properties
+```livescript
+
+```
+
+
+## Bound Methods
+```livescript
+
+bound constructor
+```
+
+
+## Set Properties in Constructor
+```livescript
+
+```
+
+
+## Inheritance
+```livescript
+
+```
+
+
+## Mixins
+```livescript
+
+```
+
+
+## Prototype
+```livescript
+
+```
+
+
+## Extended parameters
+<aside class="notes">In LiveScript, parameters accept much more than simple literals. You can assign properties, but also do more complex things, like semiautovivification:</aside>
+
+```livescript
+class Person
+	# defaults @name to [], and assigns the first element
+	set-first-name: (@[]names.0) ->
+	
+	# defaults @name to [], and adds the element (* being the array's length)
+	add-name: (@[]names[*]) ->
+	
+	# defaults @hair to {}, and assigns color
+	set-hair-color: (@{}hair.color) ->
+```
+
+
+# MOAAAAAAAAAAAAR
