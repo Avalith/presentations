@@ -66,11 +66,14 @@
 * `/* multiline */`
 
 
-## Variable Names
+## Variables
 ```livescript
 var_name
 var-name
 varName
+
+var var-name
+const x = 10
 ```
 
 
@@ -128,7 +131,7 @@ to multiple lines'
 ## Heredoc Strings
 ```livescript
 '''
-	- string can be multiline with newlines
+	- string can be multi-line with newlines
 	- beginning whitespace is ignored
 	- interpolation is #possible
 '''
@@ -141,7 +144,7 @@ to multiple lines'
 ```
 ```livescript
 //
- multiline   # whitespaces and
+ multiline   # whitespace and
  regexp      # comments are stripped
 //g
 ```
@@ -349,7 +352,7 @@ n-- #=> 2
 <aside class="notes">Equality compiles to exec so you can use the results, while the negative simply compiles to test</aside>
 
 ```livescript
-/^e(.*)/ is 'enter' #=> ["enter","nter"]
+/^e(.*)/ is 'enter' #=> ["enter", "nter"]
 /^e(.*)/ == 'zx'    #=> null
 /moo/ != 'loo'      #=> true
 ```
@@ -494,7 +497,7 @@ a = +[4, 5, 6]          #=> [+4, +5, +6];
 a = -[4, 5, 6]          #=> [-4, -5, -6];
 a = ~[4, 5, 6]          #=> [~5, ~6, ~7];
 
-a = typeof  [\b 5 {}]   #=> ["string","number","object"];
+a = typeof  [\b 5 {}]   #=> ["string", "number", "object"];
 a = typeof! [\b 5 {}]   #=> ["String", "Number", "Object"];
 
 a = new [some, classes] #=> [new some, new classes];
@@ -912,7 +915,7 @@ for ever
 
 
 
-# Coprehensions
+# Comprehensions
 
 
 ## Comprehensions
@@ -941,6 +944,236 @@ table = [{id: 1 name: 11}, {id: 2 name: 22}]
 
 # Assignment
 
+
+## Basics
+```livescript
+x = 10
+
+do ->
+	x = 5
+
+x    #=> 10
+
+do ->
+	x := 2
+
+x    #=> 2
+```
+
+
+## Compound Assignment
+```livescript
+x =   2    #=> 2
+x +=  2    #=> 4
+x -=  1    #=> 3
+x *=  3    #=> 9
+x /=  3    #=> 3
+x %=  3    #=> 0
+x %%= 3    #=> 0
+x <?= -1   #=> -1
+x >?= 2    #=> 2
+x **= 2    #=> 4
+x ^=  2    #=> 16
+
+xs = [1 2]
+xs ++= [3]
+xs           #=> [1 2 3]
+```
+
+
+## Compound Assignment Prefix
+```livescript
+# ?, ||, or && can prefix any compound assignment
+
+x = 16
+
+x ?= 10
+x            #=> 16
+
+x ||= 5      #=> 16
+x &&= 5      #=> 5
+
+x &&+= 3     #=> 8
+x ?*= 2
+x            #=> 8
+```
+
+
+## Unary Assignment
+```livescript
+y    = \45
++    = y   #=> 45   (make into number)
+!!   = y   #=> true (make into boolean)
+-~-~ = y #=> 3    (intcasting bicrement)
+```
+
+
+## Soak Assignment
+```livescript
+age = 21
+x? = age
+x    #=> 21
+
+x? = years
+x    #=> 21
+```
+
+
+## Destructuring Assignment
+```livescript
+[first, second] = [1, 2]
+
+{name, age} = {weight: 110, name: 'emma', age: 20}
+
+[first, ...middle, last] = [1 to 5]
+
+[x, ...xs]:list = [1 to 5]
+```
+
+
+## Substructuring Assignment
+```livescript
+mitch =
+	age:    21
+	height: 180cm
+	pets:    [\dog, \goldfish]
+
+phile = {}
+phile{height, pets} = mitch
+
+phile.height     #=> 180
+phile.pets       #=> ['dog', 'goldfish']
+```
+
+
+## Almost Everything is an Expression
+* If / Unless
+* Switch
+* Loops
+* Try / Catch
+
+
+
+# Property Access
+```livescript
+[1 2 3][1]        #=> 2
+[1 2 3].1         #=> 2
+{a: 1, b: 2}.b    #=> 2
+```
+
+
+## Accessignment
+```livescript
+str = 'string'
+str .= to-upper-case!   #=> 'STRING'
+```
+
+
+## Array Slice and Splice
+```livescript
+list = [1 2 3 4 5]
+list[2, 4]       #=> [3,5]
+list[1 to 3]     #=> [2,3,4]
+list[1 til 3]    #=> [2,3]
+
+list[1 til 3] = [7 8]
+list             #=> [1,7,8,4,5]
+```
+
+
+## Object Slice
+```livescript
+obj = one: 1, two: 2
+obj{first: one, two}    #=> {first: 1, two: 2}
+```
+
+
+## Length *
+```livescript
+list = [1 2 3 4 5]
+list[*] = 6
+list          #=> [1,2,3,4,5,6]
+list[*-1]     #=> 6
+```
+
+
+## Semiautovivification
+<aside class="notes">Ensures that the property exists as an object or as an array</aside>
+```livescript
+x = [{key: \hello}, [\world]]
+q = x.{}0   #=> {"key":"hello"}
+w = x.[]1   #=> ["world"]
+
+e = x.{}2   #=> {}
+r = x.[]3   #=> []
+```
+
+
+## Binding Access
+```livescript
+obj =
+	x: 5
+	add: (y) -> @x + y
+
+target =
+	x: 600
+	not-bound: obj.add
+	bound: obj~add
+
+target.not-bound 5 #=> 605
+target.bound 5     #=> 10
+```
+
+
+## Cascades
+```livescript
+a = [2 7 1 8]
+	..push 3
+	..sort!
+a #=> [1, 2, 3, 7, 8]
+
+document.query-selector \h1
+	..style
+		..color = \red
+	..inner-HTML = 'LIVESCRIPT!'
+
+a = [2 7 1 8]..push 3 ..sort! #=> [1, 2, 3, 7, 8]
+```
+
+
+## More Cascades
+```livescript
+console.log
+	x = 1
+	y = 2
+	.. x, y
+
+x = with {a: 1, b: 2}
+	..a = 7
+	..b = 11
+x #=>  {a: 7, b: 11}
+```
+
+
+
+# Exceptions
+
+
+## Throw
+```livescript
+throw new Error 'an error has occurred!'
+```
+
+
+## Try Catch and Finally
+```livescript
+try
+	...
+catch
+	handle-exception e
+finally
+	do-something!
+```
 
 
 # OOP
