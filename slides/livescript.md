@@ -67,7 +67,17 @@
 
 
 ## Variable Names
-# TODO
+```livescript
+var_name
+var-name
+varName
+```
+
+
+## YadaYadaYada
+```livescript
+...
+```
 
 
 ## Numbers
@@ -661,18 +671,271 @@ filter-nums even      #=> [2,4]
 filter-nums odd       #=> [1,3,5]
 filter-nums (< 3)     #=> [1,2]
 
-[1 2 3] |> _.reduce _, (+), 0   #=> 12
+[1 2 3] |> _.reduce _, (+), 0    #=> 6
 ```
 
 
 
 # Conditionals
-if..., switch
+
+
+## If Then Else
+```livescript
+if 2 + 2 == 6
+	'something'
+else if 2 + 2 == 5
+	'something else'
+else
+	'the default'
+
+if 2 + 2 == 4 then 'something' else 'something else'
+```
+
+
+## Unless
+```livescript
+unless 2 + 2 == 6
+	'something'
+else unless 2 + 2 == 5
+	'something else'
+else
+	'the default'
+```
+
+
+## As Expression
+```livescript
+result = if 2 / 2 is 0
+         then 'something'
+         else 'something else'
+```
+
+
+## Postfix
+```livescript
+x = 3 if 2 + 2 == 4
+x = 3 unless 2 + 2 == 5
+```
+
+
+## That
+```livescript
+if /^(e.*)/ == 'enter'
+	that.1    #=> 'enter'
+```
+
+
+## Switch
+```livescript
+switch 6
+case 1    then \hello
+case 2, 4 then \boom
+case 6
+	'here it is'
+default \something
+```
+
+
+## Switch on Nothing
+```livescript
+switch
+case 5 == 6
+	\never
+case false
+	'also never'
+case 6 / 2 is 3
+	'here'
+```
+
+
+## fallthrough
+```livescript
+switch 6
+case 6
+	something = 5
+	fallthrough
+case 4
+	'this is it'
+```
+
+
+## CoffeeScript Style
+```livescript
+switch day
+	when \Mon then 'go to work'
+	when \Tue then 'go to a movie'
+	when \Thu then 'go drinking'
+	when \Fri, \Sat
+		'go dancing'
+	when \Sun then 'drink more'
+	
+	else 'go to work'
+```
+
+
+## As Epxression
+```livescript
+result = switch
+	case 5 == 6
+		\never
+	case 6 / 2 is 3
+		'here'
+```
+
+
+## Haskell Style
+```livescript
+switch 'moto'
+| "some thing"     => \hello
+| \explosion \bomb => \boom
+| <[ the moto ? ]> => 'here it is'
+| otherwise        => \something
+
+func = (param) ->
+  | param.length < 5 => param.length
+  | otherwise        => param.slice 3
+
+state = | 2 + 2 is 5 => 'not 5'
+        | otherwise  => 'something else'
+
+state:  | 2 + 2 is 5 => 'not 5'
+        | _          => 'something else'
+```
 
 
 
-# Loops and
+# Loops
+
+
+## While
+```livescript
+i = 0
+while i < 10
+	list[i++]
+
+while i < 10 then i++
+```
+
+
+## Until
+```livescript
+i = 0
+until i > 10
+	list[i++]
+```
+
+
+## Do
+```livescript
+i = 0
+do
+	list[i++]
+while i < 10
+
+i = 0
+do
+	list[i++]
+until i > 10
+```
+
+
+## Update Clause
+```livescript
+i = 0
+while i < 10, i++ when i != 5
+	list[i]
+```
+
+
+## For
+```livescript
+for i from 1 to 10 by 3
+	i
+
+for i from 1 til 10 then i
+for i til 10 then i
+
+for val, index in list then val
+for val in list then val
+for , index in list then index
+
+for key, val of obj then val
+for key of obj then key
+for , val of obj then val
+```
+
+
+## Else
+```livescript
+i = 0
+while i < 10
+	list[i++]
+else
+	-1
+
+until i > 10
+	list[i]
+else
+	-1
+
+for i from 1 to 10 by 3
+	i
+else
+	-1
+```
+
+
+## When
+```livescript
+i = 0
+while i < 10, i++ when i != 5
+	list[i]
+
+until i > 10, i++ when i != 5
+	list[i]
+
+for i from 1 to 10 by 3 when i != 5
+	i
+```
+
+
+## Infinite Loops
+```livescript
+i = 0
+loop
+	break if ++i > 20
+
+i = 0
+for ever
+	break if ++i > 20
+```
+
+
+
 # Coprehensions
+
+
+## Comprehensions
+<aside class="notes">List comprehensions always produce a list. Nested comprehensions produce a flattened list. </aside>
+```livescript
+[x + 1 for x to 10 by 2 when x isnt 4]   #=> [1,3,7,9,11]
+
+table = [{id: 1 name: 11}, {id: 2 name: 22}]
+[{the-id, name} for {id: the-id, name} in table]
+    #=> [{"theId":1,"name":11},{"theId":2,"name":22}]
+
+{[val, val * 2] for , val of [1, 2, 3]} #=> {"1": 2, "2": 4, "3": 6}
+```
+
+
+## Comprehension Cascades
+```livescript
+[.. + 1 for [1 2 3]]   #=> [2, 3, 4]
+
+table = [{id: 1 name: 11}, {id: 2 name: 22}]
+[ ..name  for table]  #=> [11, 22]
+[{..name} for table]  #=> [{"name": 11}, {"name": 22}]
+```
 
 
 
