@@ -1246,15 +1246,16 @@ bound constructor
 
 ```livescript
 class Person
-	# defaults @name to [], and assigns the first element
+	# @name defaults to [], and assigns the first element
 	set-first-name: (@[]names.0) ->
 	
-	# defaults @name to [], and adds the element (* being the array's length)
+	# @name defaults to [], and adds the element to the the array's end
 	add-name: (@[]names[*]) ->
 	
-	# defaults @hair to {}, and assigns color
+	# @hair defaults to {}, and assigns color
 	set-hair-color: (@{}hair.color) ->
 ```
+
 
 
 # MOAAAAAAAAAAAAR
