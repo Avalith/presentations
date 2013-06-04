@@ -129,6 +129,7 @@ filter:alpha(opacity=1); }
 /*********************************************
  * CUSTOM
  *********************************************/
-.reveal pre { display: inline-block; }
 .reveal code { position: relative; font-family: "Droid Sans Mono", monospace; }
+.reveal pre { display: inline-block; }
+.reveal pre code{ max-height: 428px; }
 /*.reveal li code { display: inline-block; margin: 2px; padding: 0 5px; background: rgba(0, 0, 0, 0.5);; box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); }*/

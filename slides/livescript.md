@@ -62,6 +62,8 @@
 
 
 ## Comment
+<aside class="notes">Multiline comments are whitespace formatted and preserved in the output.</aside>
+
 * `# single line`
 * `/* multiline */`
 
@@ -1157,7 +1159,8 @@ console.log
 x = with {a: 1, b: 2}
 	..a = 7
 	..b = 11
-x #=>  {a: 7, b: 11}
+
+x   #=> {a: 7, b: 11}
 ```
 
 
@@ -1188,56 +1191,181 @@ finally
 
 ## Classes
 ```livescript
-
+class A
 ```
 
 
 ## Properties
 ```livescript
+class A
+	->
+		x: null
+		
+		(num) ->
+			@x = num
+		property: 1
+		method: (y) ->
+			@x + @property + y
 
+a = new A 3
+a.x           #=> 3
+a.property    #=> 1
+a.method 6    #=> 10
 ```
 
 
 ## Static Properties
 ```livescript
+class A
+	@static-prop = 10
+	get-static: ->
+		@@static-prop + 2
 
+A.static-prop   #=> 10
+a = new A
+a.get-static!   #=> 12
 ```
 
 
 ## Private Static Properties
 ```livescript
+class A
+	secret = 10
+	
+	get-secret: ->
+		secret
 
+a = new A
+a.get-secret!   #=> 10
 ```
 
 
 ## Bound Methods
 ```livescript
+class A
+	x: 10
+	bound-func: (x) ~>
+		@x
+	reg-func: (x) ->
+		@x
 
-bound constructor
+a = new A
+obj =
+	x: 1
+	bound: a.bound-func
+	reg: a.reg-func
+
+obj.bound!   #=> 10
+obj.reg!     #=> 1
 ```
 
 
 ## Set Properties in Constructor
 ```livescript
+class A
+	(@x) ->
+	
+	f: (@y) ->
+		@x + @y
 
+a = new A 2
+a.x     #=> 2
+a.f 3   #=> 5
+a.y     #=> 3
+```
+
+
+## Bound Constructors
+<aside class="notes">If you define the constructor as a bound function ~>, you don't need to use new when making a new instance.</aside>
+
+```livescript
+class A
+	(@x) ~>
+
+a = A 4
+a.x #=> 4
 ```
 
 
 ## Inheritance
 ```livescript
+class A
+	->
+		@x = 1
+	@static-prop = 8
+	method: ->
+		@x + 2
 
+class B extends A
+	->
+		@x = 10
+
+B.static-prop #=> 8
+b = new B
+b.x         #=> 10
+b.method!   #=> 12
+```
+
+
+## Super
+```livescript
+class A
+	->
+		@x = 1
+	method: (num) ->
+		@x + num
+
+class B extends A
+	->
+		@y = 2
+		super!
+
+	method: (num) ->
+		@y + super ...
+
+b = new B
+b.y #=> 2
+b.method 10 #=> 13
 ```
 
 
 ## Mixins
 ```livescript
+Renameable =
+	set-name: (@name) ->
+	get-name: -> @name ? @id
 
+class A implements Renameable
+	->
+		@id = Math.random! * 1000
+
+a = new A
+a.get-name!    #=> some random number
+a.set-name 'moo'
+a.get-name!    #=> 'moo'
 ```
 
 
 ## Prototype
 ```livescript
+class A
+	prop: 10
+	func: -> @prop
 
+a = new A
+b = new A
+a.func! #=> 10
+
+A::prop = 6
+a.func!    #=> 6
+b.func!    #=> 6
+
+A ::=
+	prop: 5
+	func: -> @prop + 4
+
+a.func!    #=> 9
+b.func!    #=> 9
 ```
 
 
@@ -1258,4 +1386,19 @@ class Person
 
 
 
-# MOAAAAAAAAAAAAR
+# MOAR
+
+
+## Support
+* Syntax higlight for SublimeText
+* No linting yet
+* No source maps yet
+* LiveScript 2.0 comming
+* js => js2coffee => coffee2ls
+
+
+# In Practice
+* js => ls => js
+* lines: 277 => 193 => 221
+* size: 9414 => 7543 => 9927
+* time needed to convert about 2 hours
