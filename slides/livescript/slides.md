@@ -2,12 +2,11 @@
 <small>[Alexander Ivanov - Karamfil](http://karamfil.avalith.bg)</small>
 
 
-
-# TODO
 ## Who am I
 <aside class="notes"> NOTES </aside>
 
 * All-End Developer
+* Bla bla bla
 
 
 
@@ -25,11 +24,11 @@
 
 
 ## What is LiveScript
-<aside class="notes">LiveScript is a language which compiles to JavaScript. It has a straightforward mapping to JavaScript and allows you to write expressive code devoid of repetitive boilerplate. While LiveScript adds many features to assist in functional style programming, it also has many improvements for object oriented and imperative programming.</aside>
-
-* Language which compiles to JavaScript
+* Compiles to JavaScript
 * Coco fork
 * CoffeeScript descendant
+* Functional
+* Object oriented
 
 
 ## Requirements
@@ -64,8 +63,10 @@
 ## Comment
 <aside class="notes">Multiline comments are whitespace formatted and preserved in the output.</aside>
 
-* `# single line`
-* `/* multiline */`
+```livescript
+# single line
+/* multiline */
+```
 
 
 ## Variables
@@ -88,12 +89,14 @@ const x = 10
 ## Numbers
 <aside class="notes">2~100 = 4<br />36~zz = 1295</aside>
 
-* `123`
-* `12.3`
-* `0.123`
-* `10_000_000km`
-* `2~100`
-* `36~zz`
+```livescript
+123
+12.3
+0.123
+10_000_000km
+2~100
+36~zz
+```
 
 
 ## Booleans
@@ -111,16 +114,20 @@ const x = 10
 
 
 ## Strings
-* `'fancy string'`
-* `"fancy string"`
-* `\string-without-spaces`
+```livescript
+'fancy string'
+"fancy string"
+\string-without-spaces
+```
 
 
 ## String Interpolation
-* `'2 + 2 = #{2 + 2}'`
-* `"2 + 2 = #{2 + 2}"`
-* `"Hello #name"`
-* `%"#x #y"` compiles to `[x, " ", y];`
+```livescript
+"2 + 2 = #{2 + 2}"
+'2 + 2 = #{2 + 2}'
+"Hello #name"
+%"#x #y"  #=> [x, " ", y];
+```
 
 
 ## Multiline Strings
@@ -148,20 +155,21 @@ to multiple lines'
 //
  multiline   # whitespace and
  regexp      # comments are stripped
+ #variable   # interpolation
 //g
 ```
 
 
 ## Objects
 ```livescript
-obj = {foo: 1, bar: 'baz'}
+obj = { foo: 1, bar: 'baz' }
 ```
 ```livescript
 obj = foo: 1, bar: 'baz'
 ```
 ```livescript
 obj = 
-	foo: 1,
+	foo: 1
 	bar: 'baz'
 ```
 
@@ -181,14 +189,6 @@ obj = {
 	+this_is_true
 	-this_is_false
 }
-```
-
-
-## Objects - This
-```livescript
-this
-@
-@prop_name
 ```
 
 
@@ -218,19 +218,18 @@ one_item =
 ## Lists - Trees
 ```livescript
 tree = 
-	* 1
+	*	1
 		'a'
 		'b'
-	* 2
+	*	2
 		'c'
 		'd'
 
 obj_list = 
-	*   a: 1
-	    b: 2
-	*   a: 3
-	    b: 4
-
+	*	a: 1
+		b: 2
+	*	a: 3
+		b: 4
 ```
 
 
@@ -251,6 +250,20 @@ obj_list =
 
 x = 5
 [1 to x]       #=> [1, 2, 3, 4, 5]
+```
+
+
+## This
+```livescript
+this
+@
+@prop_name
+```
+
+
+## Literal JavasScript
+```livescript
+``alert(123);``
 ```
 
 
@@ -383,6 +396,8 @@ false xor false #=> false
 
 
 ## Logic - Magic
+<aside class="notes">and, or, and xor close implicit calls, while || and && do not.<br /><br />You can call logic operators.</aside>
+  
 ```livescript
 even 0 and 3 # even(0) && 3;  => 3
 even 0 &&  3 # even(0 && 3);  => true
@@ -403,11 +418,11 @@ obj = id: 23, name: \rogers
 ```
 
 
-## Existential
+## Existential?!?
 ```livescript
 do_this ? do_that
 string = \boom if window?
-string = 'yeah' if window!?
+string = \yeah if window!?
 document?.host
 ```
 
@@ -415,11 +430,9 @@ document?.host
 ## Strings
 ```livescript
 'hello' + ' ' + 'world'  #=> 'hello world'
-string = 'hello '        #=> 'hello '
-string += \world         #=> 'hello world'
+'hello world' - /l/      #=> 'hello world'.replace(/l/, '');
 
 'a' * 3                  #=> 'aaa'
-'hello world' - /l/      #=> 'hello world'.replace(/l/, '');
 'hello world' / \o       #=> 'hello world'.split('o');
 ```
 
@@ -451,8 +464,9 @@ delete! Math.PI #=> false
 ```livescript
 obj = {one: 1, two: 2}
 obj <<< three: 3 #=> {one: 1, two: 2, three: 3}
+obj import window
 {go: true} <<<< window
-import obj
+obj import all window
 ```
 
 
@@ -508,7 +522,7 @@ a = ^^[copy, these]     #=> [clone$(copy), clone$(these)];
 do [a, b, c]            #=> a(), b(), c();
 
 list[1,2,3]             #=> [list[1], list[2], list[3]];
-++list[1,2,3]           #=> --list[1], --list[2], --list[3];
+--list[1,2,3]           #=> --list[1], --list[2], --list[3];
 delete list[1, 2]       #=> delete list[1], delete list[2];
 
 ```
@@ -535,11 +549,11 @@ a = (f >> g)    # g(f(param))
 plus2 = (+ 2)
 plus2 4            #=> 6
 
-in3 = (in [to 3])
-in3 2              #=> true
-
 plus = (+)
 plus 2 4           #=> 6
+
+in3 = (in [to 3])
+in3 2              #=> true
 ```
 
 
@@ -566,9 +580,9 @@ g = !(x) -> x + 2
 function f
 	...
 
-function f then 2
+function f then ...
 
-!function f then 2
+!function f then ...
 ```
 
 
@@ -584,6 +598,9 @@ func 1 2
 $ \h1 .find \a .text!
 
 do -> 3 + 2    #=> 5
+
+add = (x, y) -> x + y
+3 `add` 4      #=> 7
 ```
 
 
@@ -591,15 +608,15 @@ do -> 3 + 2    #=> 5
 ```livescript
 (x = 4, y = 3) -> x + y
 
-f = ({x, y}) -> "#x,#y"
+f = ({x, y = 2}) -> "#x,#y"
 f y: 2, x: 3    #=> '3,2'
 
-f = (@text) -> this
+f = (@text) ->
 
-obj
-(obj.age = 1) -> obj
+f = (obj.age = 1) -> obj
 
 f = -> it + 2
+f = -> &
 f = -> &0 + 2
 ```
 
@@ -609,11 +626,8 @@ f = -> &0 + 2
 f = (x, ...ys) -> 
 f = (x, ...ys, last) -> 
 
+f ...[a, b, c, d]
 g = (a, b, c, d) -> f ...
-
-f ...[1, 2, 3, 4]
-
-f = -> call-something-else ...
 
 posts['op' ...'replies'] = thread
 ```
@@ -623,6 +637,7 @@ posts['op' ...'replies'] = thread
 ```livescript
 f = (!!x) -> x
 f = (+x) -> x
+f = (-x) -> x
 f = (^^x) -> x
 ```
 
@@ -698,6 +713,7 @@ else
 	'the default'
 
 if 2 + 2 == 4 then 'something' else 'something else'
+if 2 + 2 == 4 => 'something' else 'something else'
 ```
 
 
@@ -848,14 +864,6 @@ until i > 10
 ```
 
 
-## Update Clause
-```livescript
-i = 0
-while i < 10, i++ when i != 5
-	list[i]
-```
-
-
 ## For
 ```livescript
 for i from 1 to 10 by 3
@@ -894,13 +902,21 @@ else
 ```
 
 
-## When
+## Update Clause
 ```livescript
 i = 0
-while i < 10, i++ when i != 5
+while i < 10, i++
+	list[i]
+```
+
+
+## Guard Clause
+```livescript
+i = 0
+while i < 10 when i != 5
 	list[i]
 
-until i > 10, i++ when i != 5
+until i > 10 when i != 5
 	list[i]
 
 for i from 1 to 10 by 3 when i != 5
@@ -1062,10 +1078,13 @@ phile.pets       #=> ['dog', 'goldfish']
 
 
 # Property Access
+
+
+## Basics
 ```livescript
+{a: 1, b: 2}.b    #=> 2
 [1 2 3][1]        #=> 2
 [1 2 3].1         #=> 2
-{a: 1, b: 2}.b    #=> 2
 ```
 
 
@@ -1079,9 +1098,9 @@ str .= to-upper-case!   #=> 'STRING'
 ## Array Slice and Splice
 ```livescript
 list = [1 2 3 4 5]
-list[2, 4]       #=> [3,5]
-list[1 to 3]     #=> [2,3,4]
-list[1 til 3]    #=> [2,3]
+list[2 to 4]     #=> [3, 4, 5]
+list[2 til 4]    #=> [3, 4]
+list[2, 4]       #=> [3, 5]
 
 list[1 til 3] = [7 8]
 list             #=> [1,7,8,4,5]
@@ -1091,7 +1110,7 @@ list             #=> [1,7,8,4,5]
 ## Object Slice
 ```livescript
 obj = one: 1, two: 2
-obj{first: one, two}    #=> {first: 1, two: 2}
+obj{one, second: two}    #=> {first: 1, two: 2}
 ```
 
 
@@ -1198,14 +1217,14 @@ class A
 ## Properties
 ```livescript
 class A
-	->
-		x: null
-		
-		(num) ->
-			@x = num
-		property: 1
-		method: (y) ->
-			@x + @property + y
+	x: null
+	
+	(num) ->
+		@x = num
+	
+	property: 1
+	method: (y) ->
+		@x + @property + y
 
 a = new A 3
 a.x           #=> 3
@@ -1276,7 +1295,7 @@ a.y     #=> 3
 
 
 ## Bound Constructors
-<aside class="notes">If you define the constructor as a bound function ~>, you don't need to use new when making a new instance.</aside>
+<aside class="notes">constructor as a bound function ~>, you don't need to use new when making a new instance</aside>
 
 ```livescript
 class A
@@ -1292,6 +1311,7 @@ a.x #=> 4
 class A
 	->
 		@x = 1
+	
 	@static-prop = 8
 	method: ->
 		@x + 2
@@ -1310,8 +1330,8 @@ b.method!   #=> 12
 ## Super
 ```livescript
 class A
-	->
-		@x = 1
+	-> @x = 1
+	
 	method: (num) ->
 		@x + num
 
@@ -1319,7 +1339,7 @@ class B extends A
 	->
 		@y = 2
 		super!
-
+	
 	method: (num) ->
 		@y + super ...
 
@@ -1360,7 +1380,7 @@ A::prop = 6
 a.func!    #=> 6
 b.func!    #=> 6
 
-A ::=
+A::=
 	prop: 5
 	func: -> @prop + 4
 
@@ -1386,19 +1406,35 @@ class Person
 
 
 
-# MOAR
+# MOARRR
 
 
 ## Support
-* Syntax higlight for SublimeText
+* Syntax higlight (SublimeText, Vim)
 * No linting yet
 * No source maps yet
 * LiveScript 2.0 comming
-* js => js2coffee => coffee2ls
 
 
-# In Practice
-* js => ls => js
-* lines: 277 => 193 => 221
-* size: 9414 => 7543 => 9927
-* time needed to convert about 2 hours
+## Links
+* http://avalith.bg
+* http://livescript.net
+* https://github.com/gkz/LiveScript
+
+
+## In Practice
+* javascript => livescript => compiled
+* lines: __275__ => __171__ => __216__
+* size: __9403__ => __7047__ => __9606__
+* time needed to convert: __~2__ hours
+
+
+## The code
+
+
+
+# Thank You!
+
+
+# Questions?
+![Ain't Nobody Got Time For That](http://mvposts.com/wp-content/uploads/2013/05/Aint-Nobody-Got-Time-for-That-389x267.jpg)

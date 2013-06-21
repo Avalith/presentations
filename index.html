@@ -40,7 +40,7 @@
 		<section data-markdown="slides/slides.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
 		<script>
 			var current_slide_file = location.search.substr(1);
-			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = 'slides/' + current_slide_file + '.md'; }
+			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = 'slides/' + current_slide_file + '/slides.md'; }
 		</script>
 	</div>
 	
@@ -70,7 +70,7 @@
 		maxScale: 2.0,
 		
 		controls		: false,
-		history			: true,
+		// history			: true,
 		// center			: false,
 		// rollingLinks	: false,
 		// mouseWheel		: true,
