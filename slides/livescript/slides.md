@@ -218,18 +218,18 @@ one_item =
 ## Lists - Trees
 ```livescript
 tree = 
-	*	1
-		'a'
-		'b'
-	*	2
-		'c'
-		'd'
+	*   1
+	    'a'
+	    'b'
+	*   2
+	    'c'
+	    'd'
 
 obj_list = 
-	*	a: 1
-		b: 2
-	*	a: 3
-		b: 4
+	*   a: 1
+	    b: 2
+	*   a: 3
+	    b: 4
 ```
 
 
@@ -700,7 +700,7 @@ filter-nums (< 3)     #=> [1,2]
 
 
 
-# Conditionals
+# Control Flow
 
 
 ## If Then Else

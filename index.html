@@ -33,10 +33,7 @@
 <body>
 
 <div class="reveal">
-	<pre><code id="message-log" class="javascript" style="z-index: 100"></code></pre>
-	
 	<div class="slides">
-		
 		<section data-markdown="slides/slides.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
 		<script>
 			var current_slide_file = location.search.substr(1);
@@ -50,18 +47,6 @@
 <script src="js/reveal.min.js"></script>
 
 <script>
-	message_log = document.getElementById('message-log');
-	message_log.style.display = 'none';
-	message_log.onclick = function(){ message_log.style.display = 'none'; };
-	message_log.log = function(log)
-	{
-		this.innerHTML = log
-		this.style.display = 'block';
-		hljs.highlightBlock(this)
-	}
-	document.body.onkeyup = function(ev){ if(ev.ctrlKey && ev.keyCode == 32){ message_log.style.display = 'none'; } };
-	
-	
 	// https://github.com/hakimel/reveal.js#configuration
 	Reveal.initialize(
 	{
@@ -83,7 +68,7 @@
 			{ src: 'plugin/markdown/marked.js'			, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 			{ src: 'plugin/markdown/markdown.js'		, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 			{ src: 'plugin/highlight/highlight.js'		, async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-			{ src: 'plugin/livescript/livescript.js'	, async: true,condition: function() { return true; } },
+			// { src: 'plugin/livescript/livescript.js'	, async: true,condition: function() { return true; } },
 			// { src: 'plugin/zoom-js/zoom.js'			, async: true, condition: function() { return !!document.body.classList; } },
 			{ src: 'plugin/notes/notes.js'				, async: true, condition: function() { return !!document.body.classList; } }
 			// { src: 'plugin/search/search.js'			, async: true, condition: function() { return !!document.body.classList; } }
