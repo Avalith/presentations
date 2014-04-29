@@ -798,7 +798,7 @@ switch day
 ```
 
 
-## As Epxression
+## As Expression
 ```livescript
 result = switch
 	case 5 == 6
@@ -1437,4 +1437,10 @@ class Person
 
 
 # Questions?
-![Ain't Nobody Got Time For That](http://mvposts.com/wp-content/uploads/2013/05/Aint-Nobody-Got-Time-for-That-389x267.jpg)
+![Ain't Nobody Got Time For That](slides/livescript/images/questions.jpg)
+
+
+
+# A Programmer
+# is as Powerful
+# as his Tools
