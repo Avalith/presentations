@@ -62,7 +62,7 @@
 3. Who is reponsible for the business case?
 4. Who represents the users and suppliers?
 5. What are the exact roles and responsibilities?
-6. Who is the project manager
+6. Who is the project manager?
 
 
 
