@@ -59,7 +59,7 @@
 
 1. Who is who in the project?
 2. Who is sponsoring the project?
-3. Who is reponsible for the business case?
+3. Who is reponsible for the business case
 4. Who represents the users and suppliers?
 5. What are the exact roles and responsibilities?
 6. Who is the project manager?
