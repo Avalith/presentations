@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Presentation</title>
+	<title>reveal.js – The HTML Presentation Framework</title>
 
 	<meta name="description" content="">
 	<meta name="author" content="Alexander Ivanov - Karamfil">
@@ -12,7 +12,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 	<link rel="stylesheet" href="css/reveal.min.css">
 	<link rel="stylesheet" href="css/theme/avalith.css">
@@ -20,9 +20,13 @@
 	<!-- For syntax highlighting -->
 	<link rel="stylesheet" href="lib/css/sunburst.css">
 
-	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<!-- Printing and PDF exports -->
 	<script>
-		document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
 	</script>
 
 	<!--[if lt IE 9]>
@@ -34,7 +38,7 @@
 
 <div class="reveal">
 	<div class="slides">
-		<section data-markdown="slides/slides.md" data-separator="^\n\*\*\*\n\n" data-vertical="^\n\n"></section>
+		<section data-markdown="slides/slides.md" data-separator="^\n\*\*\*\n\n" data-separator-vertical="^\n\n"></section>
 		<script>
 			var current_slide_file = location.search.substr(1);
 			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = 'slides/' + current_slide_file + '/slides.md'; }
@@ -64,12 +68,12 @@
 		// transitionSpeed	: 'fast', // default/fast/slow
 		
 		dependencies: [
-			// { src: 'lib/js/classList.js'				, condition: function() { return !document.body.classList; } },
+			{ src: 'lib/js/classList.js'				, condition: function() { return !document.body.classList; } },
 			{ src: 'plugin/markdown/marked.js'			, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 			{ src: 'plugin/markdown/markdown.js'		, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 			{ src: 'plugin/highlight/highlight.js'		, async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-			// { src: 'plugin/livescript/livescript.js'	, async: true,condition: function() { return true; } },
-			// { src: 'plugin/zoom-js/zoom.js'			, async: true, condition: function() { return !!document.body.classList; } },
+			// { src: 'plugin/livescript/livescript.js'	, async: true, condition: function() { return true; } },
+			{ src: 'plugin/zoom-js/zoom.js'				, async: true, condition: function() { return !!document.body.classList; } },
 			{ src: 'plugin/notes/notes.js'				, async: true, condition: function() { return !!document.body.classList; } }
 			// { src: 'plugin/search/search.js'			, async: true, condition: function() { return !!document.body.classList; } }
 			// { src: 'plugin/remotes/remotes.js'		, async: true, condition: function() { return !!document.body.classList; } }
