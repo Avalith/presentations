@@ -8,7 +8,7 @@
 * All-End Developer
 * Bla bla bla
 
-
+***
 
 # What is CoffeeScript
 
@@ -18,7 +18,7 @@
 
 ## And the winner is...
 
-
+***
 
 # LiveScript
 
@@ -45,7 +45,7 @@
 * `lsc -i`
 * `lsc -pe '[1 to 5]'`
 
-
+***
 
 # Syntax
 
@@ -55,7 +55,7 @@
 * newlines are used to terminate statements
 * semicolons for one-line statements
 
-
+***
 
 # Literals
 
@@ -266,7 +266,7 @@ this
 ``alert(123);``
 ```
 
-
+***
 
 # Operators
 
@@ -556,7 +556,7 @@ in3 = (in [to 3])
 in3 2              #=> true
 ```
 
-
+***
 
 # Functions
 
@@ -698,7 +698,7 @@ filter-nums (< 3)     #=> [1,2]
 [1 2 3] |> _.reduce _, (+), 0    #=> 6
 ```
 
-
+***
 
 # Control Flow
 
@@ -827,7 +827,7 @@ state:  | 2 + 2 is 5 => 'not 5'
         | _          => 'something else'
 ```
 
-
+***
 
 # Loops
 
@@ -935,7 +935,7 @@ for ever
 	break if ++i > 20
 ```
 
-
+***
 
 # Comprehensions
 
@@ -963,7 +963,7 @@ table = [{id: 1 name: 11}, {id: 2 name: 22}]
 [{..name} for table]  #=> [{"name": 11}, {"name": 22}]
 ```
 
-
+***
 
 # Assignment
 
@@ -1075,7 +1075,7 @@ phile.pets       #=> ['dog', 'goldfish']
 * Loops
 * Try / Catch
 
-
+***
 
 # Property Access
 
@@ -1182,7 +1182,7 @@ x = with {a: 1, b: 2}
 x   #=> {a: 7, b: 11}
 ```
 
-
+***
 
 # Exceptions
 
@@ -1203,7 +1203,7 @@ finally
 	do-something!
 ```
 
-
+***
 
 # OOP
 
@@ -1404,7 +1404,7 @@ class Person
 	set-hair-color: (@{}hair.color) ->
 ```
 
-
+***
 
 # MOARRR
 
@@ -1431,7 +1431,7 @@ class Person
 
 ## The code
 
-
+***
 
 # Thank You!
 
@@ -1439,7 +1439,7 @@ class Person
 # Questions?
 ![Ain't Nobody Got Time For That](slides/livescript/images/questions.jpg)
 
-
+***
 
 # A Programmer
 # is as Powerful

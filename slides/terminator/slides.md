@@ -8,14 +8,14 @@
 * All-End Developer
 * Bla bla bla
 
-
+***
 
 # What is Terminator
 
 
 ![Split Screen](slides/terminator/images/terminator.jpg)
 
-
+***
 
 # Installation
 
@@ -34,7 +34,7 @@ emerge x11-terms/terminator
 1. Preferences
 1. Preferred Applications
 
-
+***
 
 # Features
 
@@ -60,7 +60,7 @@ emerge x11-terms/terminator
 	$ ssh terminator -l allroot
 ![Split Screen](slides/terminator/images/group.png)
 
-
+***
 
 # Plugins
 
@@ -73,7 +73,7 @@ emerge x11-terms/terminator
 
 ## Terminal Shot
 
-
+***
 
 # Hot Keys
 
@@ -152,7 +152,7 @@ emerge x11-terms/terminator
 	Ctrl Shift F        Search within terminal scrollback
 	Ctrl Shift S        Hide/Show Scrollbar
 
-
+***
 
 # Thank You!
 
@@ -160,7 +160,7 @@ emerge x11-terms/terminator
 # Questions?
 ![Ain't Nobody Got Time For That](slides/livescript/images/questions.jpg)
 
-
+***
 
 # A Programmer
 # is as Powerful
