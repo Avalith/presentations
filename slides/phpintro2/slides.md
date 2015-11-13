@@ -12,7 +12,7 @@
 
 ### Let's see IF this sparks your interest
 ```
-if ($a > $b)
+if($a > $b)
 {
 	echo "A is bigger than B";
 }
@@ -36,7 +36,7 @@ else { echo "A is smaller than B"; }
 
 ### Alternative Syntax
 ```
-<?php if ($a == 1): ?>
+<?php if($a == 1): ?>
 A is equal to 1
 <?php endif; ?>
 ```
@@ -58,13 +58,13 @@ endif;
 
 ***
 
-## Iterators
+## Loops
 
 
 ### While
 ```
 $i = 1;
-while ($i <= 5)
+while($i <= 5)
 {
 	echo $i;
 	$i++;
@@ -138,6 +138,29 @@ foreach ($animals as $animal)
 ```
 
 
+### Adding key -> value to our foreach
+```
+$featured = array('key1' => 'value1', 'key2' => 'value2');
+foreach($featured as $key => $value)
+{
+	// Here we can access the $key and $value pair for this iteration
+	// On the first iteration these would be key1 and value1
+}
+```
+
+
+### References and foreach
+```
+foreach(array(1,2,3) as &$row)
+{
+	$value = $value * 2
+}
+
+// Since the reference is still pointing at the last element in the loop we need to unset
+unset($value)
+```
+
+
 ### Breaking the loop
 We can use
 ```
@@ -159,12 +182,24 @@ foreach($animals as $animal)
 	echo $animal;
 }
 ```
-
 Notice the break 1?
 ```
 break 1; = break;
 ```
 You can use break n; to exit any number of nested enclosing structures
+For example:
+
+
+### Break 2
+```
+foreach(...)
+{
+	foreach(...)
+	{
+		if(i.name == j) break 2; //Breaks 2 levels, so breaks outermost foreach
+	}
+}
+```
 
 
 ### Let us CONTINUE:
@@ -228,7 +263,7 @@ elseif($i == 3)
 	echo "The Variable is equal to 3"
 }
 ```
-
+Alternative syntax, multiple cases, no breaks output example and default case, curly braces for cases
 
 
 ### The previous example seems like a nightmare.
@@ -283,12 +318,41 @@ echo "The $breed is $color"; // The afhan is brown
 ```
 
 
+###Variable includes
+```
+php/product1.php:
+<?php echo "This is product 1"; ?>
+
+php/product2.php:
+<?php echo "This is product 2"; ?>
+```
+```
+<?php
+		$PageName = "1";
+		include ('php/product' . $PageName . '.php');
+		include ("php/product$PageName.php");
+
+		$PageName = "2";
+		include ('php/product' . $PageName . '.php');
+		include ("php/product$PageName.php");
+?>
+```
+
+Output:
+```
+This is product 1
+This is product 1
+This is product 2
+This is product 2
+```
+
+
 ### Require:
 Require is idenctical to include for the one difference - if it fails you produce a fatal E_COMPILE_ERROR level error which will halt the script.
 
 
 ### _once
-The include_once and require_once commands will first check if the file has already been included and if so - not include(require) it again.
+The `include_once()` and `require_once()` commands will first check if the file has already been included and if so - not include(require) it again.
 
 
 ### Go to
@@ -354,7 +418,7 @@ echo patka(2);
 Output:
 ```
 Qj 5 patki!
-Qj patki!
+Qj  patki!
 Qj 2 patki!
 ```
 
@@ -368,6 +432,110 @@ function patka()
 
 $func = 'patka';
 $func(); // This is the same as calling patka()
+```
+
+
+### Type check
+```
+function sum(int $a, int $b)
+{
+	return $a + $b;
+}
+
+var_dump(sum(1.2, 2.5));
+```
+
+Output:
+```
+int(3)
+```
+
+
+### Return type declaration
+We can ensure that the returned type is of type
+```
+function sum($a, $b) : float
+{
+	return $a + $b
+}
+```
+a + b will always be of type float
+
+
+### Possible return types:
+* Class/Interface name - make sure it's an instance of class X
+* self - only usable on class/instance methods
+* array
+* callable
+* bool
+* float
+* int
+* string
+
+
+### ...$arg:
+The `...` denotes that the function accepts a variable number of arguments
+```
+function sum(...$numbers)
+{
+	$acc = 0;
+	foreach ($numbers as $n)
+	{
+		$acc += $n;
+	}
+	return $acc;
+}
+
+echo sum(1,2,3,4);
+```
+
+Output:
+`10`
+
+
+### func\_get\_
+* func_num_args() - returns the number of arguments passed to the function
+* func_get_arg( int $arg_num ) - return an item from the argument list
+* func_get_args() - returns an array comprising a function's argument list
+
+```
+<?php
+function sum() {
+	$acc = 0;
+	foreach (func_get_args() as $n) {
+		$acc += $n;
+	}
+	return $acc;
+}
+
+echo sum(1, 2, 3, 4);
+?>
+```
+
+
+### Anonymous functions/Closures
+```
+<?php
+echo preg_replace_callback('~-([a-z])~', function ($match)
+{
+	return strtoupper($match[1]);
+}, 'hello-world');
+// outputs helloWorld
+?>
+```
+
+
+### We can assign functions to a variable
+```
+<?php
+$greet = function($name)
+{
+	printf("Hello %s\r\n", $name);
+};
+
+$greet('World');
+$greet('PHP');
+?>
 ```
 
 ***
@@ -442,6 +610,63 @@ Protected variables can be redeclared but can't be accessed by an instance of th
 Private variable can neither be redeclared, nor accessed by an instance of the class.
 
 
+### Final
+The `Final` keyword is used in order to stop child classes from overriding the method.
+Example:
+```
+class BaseClass
+{
+	final public function test()
+	{
+		echo 'PATKA!'
+	}
+}
+
+class ChildClass extends BaseClass
+{
+	public function test()
+	{
+		echo 'NOT PATKA!'
+	}
+}
+
+//Fatal Error: Cannot override final method BaseClass::test()
+```
+
+
+### Static
+Static methods and constants can be accessed without the need for an instance of the class
+```
+class Person
+{
+	public static function countPeople()
+	{
+		// ...
+	}
+}
+Person::countPeople();
+```
+
+
+### Class constants
+It is possible to define constant values inside classes that remain the same and are unchangeable.
+```
+class MyClass
+{
+	const CONSTANT = 'unchangeable';
+	
+	function showConstant()
+	{
+		echo self::CONSTANT;
+	}
+}
+
+echo  MyClass:CONSTANT;
+
+$instance\_of\_myclass = new MyClass();
+$class->showConstant();
+```
+
 
 ### Abstract classes
 Abstract classes are classes which cannot be instantiated and contain at least one abstract method
@@ -493,6 +718,33 @@ NormalClass
 PATKANormalClass
 ```
 
+
+### Interfaces
+Object interfaces allow you to create code which specifies which methods a class must implement, without having to define how these methods are handled.
+```
+interface Countable
+{
+	public function count();
+}
+```
+
+```
+class CountMyThings implements Countable
+{
+	public function count()
+	{
+		return count($this->arrayOfThings);
+	}
+}
+```
+
+
+
+### Difference between abstract and interface classes?
+Use an interface when you want to force developers working in your system to implement a set number of methods on the classes they are building.
+
+Use an abstract class when you want to force developers working in your system to implement a set number of methods AND you want to provide some base methods that will help them develop child classes
+
 ***
 
 ## Namespaces
@@ -502,7 +754,7 @@ PATKANormalClass
 Namespaces are a way of encapsulating items.
 They solve two main problems in PHP:
 
-  * Name collisions between your code, internal PHP classes/functions/constants and third-party classes/functions/constants
+  * Name collisions between your code, internal PHP classes\functions\constants and third-party classes\functions\constants
   * Ability to alias longer names and improve readability
 
 
@@ -525,10 +777,10 @@ class Eddard
 }
 ```
 
-To create and instance of Eddard from some-other-file.php
+To create an instance of Eddard from some-other-file.php
 ```
 require some-other-file.php;
-$foo = new \Acme\Tools\Eddard();
+$foo = new Acme\Tools\Eddard();
 ```
 
 
