@@ -1,4 +1,4 @@
-# PHP osnovas
+# PHP fundamentals part I
 <small>[Alexander Ivanov - Karamfil](http://karamfil.avalith.bg)</small>
 
 ***
@@ -58,7 +58,7 @@
 * optionally preceded by a sign (- or +).
 
 
-#Literal
+#Integer literals
 ```
 $a = 1234; // decimal number
 $a = -123; // a negative number
@@ -238,7 +238,7 @@ $bar->do_foo();
 # Resources
 
 
-### A resource is a special variable, holding a reference to an external resource. Resources are created and used by special functions. See the appendix for a listing of all these functions and the corresponding resource types.
+### A resource is a special variable, holding a reference to an external resource. Resources are created and used by special functions.
 
 
 # NULL
@@ -254,6 +254,29 @@ $var = NULL;
 
 
 # Callbacks / Callables
+
+
+###Some functions like call_user_func() or usort() accept user-defined callback functions as a parameter. Callback functions can not only be simple functions, but also object methods, including static class methods.
+
+
+### A PHP function is passed by its name as a string.
+```
+function my_callback_function() {
+    echo 'hello world!';
+}
+call_user_func('my_callback_function');
+```
+```
+class MyClass {
+    static function myCallbackMethod() {
+        echo 'Hello World!';
+    }
+}
+call_user_func(array('MyClass', 'myCallbackMethod'));
+
+$obj = new MyClass();
+call_user_func(array($obj, 'myCallbackMethod'));
+```
 
 
 # Type casting
@@ -306,8 +329,8 @@ $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
 
 
 # Predefined Variables
-#### PHP provides a large number of predefined variables to any script which it runs. Many of these variables, however, cannot be fully documented as they are dependent upon which server is running, the version and setup of the server, and other factors.
-#### From version 4.1.0 onward, PHP provides an additional set of predefined arrays containing variables from the web server (if applicable), the environment, and user input. These new arrays are rather special in that they are automatically global--i.e., automatically available in every scope. For this reason, they are often known as "superglobals". (There is no mechanism in PHP for user-defined superglobals.).
+#### PHP provides a large number of predefined variables to any script which it runs. Many of these variables, however, cannot be fully documented as they are dependent upon which server is running.
+#### From version 4.1.0 onward, PHP provides an additional set of predefined arrays containing variables from the web server (if applicable), the environment, and user input.
 
 
 # Variable scope
@@ -371,7 +394,8 @@ echo $_GET['username'];
 ***
 
 # Constants
-A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.
+### A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.
+
 
 # Read on php 7
 
@@ -379,7 +403,7 @@ A constant is an identifier (name) for a simple value. As the name suggests, tha
 ### You can define a constant by using the define()-function or by using the const keyword outside a class definition as of PHP 5.3.0. Once a constant is defined, it can never be changed or undefined.
 
 
-### The name of a constant follows the same rules as any label in PHP. A valid constant name starts with a letter or underscore, followed by any number of letters, numbers, or underscores. As a regular expression, it would be expressed thusly: [a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*
+### A valid constant name starts with a letter or underscore, followed by any number of letters, numbers, or underscores. As a regular expression, it would be expressed thusly: [a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*
 ```
 // Valid constant names
 define("FOO",     "something");
@@ -442,6 +466,9 @@ $b *= 7;
 
 
 ## The trenary conditional operator:
+
+
+### If the value of the first subexpression is TRUE (non-zero), then the second subexpression is evaluated, and that is the result of the conditional expression. Otherwise, the third subexpression is evaluated, and that is the value.
 ```
 // $first ? $second : $third;
 
@@ -450,13 +477,10 @@ $var_is_greater_than_two = ($var > 2 ? true : false); // returns true
 ```
 
 
-## Since PHP 5.3, it is possible to leave out the middle part of the conditional operator.Expression expr1 ?: expr3 returns expr1 if expr1 evaluates to TRUE, and expr3 otherwise.
+### Since PHP 5.3, it is possible to leave out the middle part of the conditional operator.Expression expr1 ?: expr3 returns expr1 if expr1 evaluates to TRUE, and expr3 otherwise.
 ```
 $first ?: $third;
 ```
-
-
-### If the value of the first subexpression is TRUE (non-zero), then the second subexpression is evaluated, and that is the result of the conditional expression. Otherwise, the third subexpression is evaluated, and that is the value.
 
 
 ## Null coalesce operator:
@@ -470,7 +494,7 @@ $first ?? $second;
 # Operators
 
 
-## An operator is something that takes one or more values (or expressions, in programming jargon) and yields another value (so that the construction itself becomes an expression).
+### An operator is something that takes one or more values (or expressions, in programming jargon) and yields another value (so that the construction itself becomes an expression).
 
 
 ## Operators type list
@@ -610,7 +634,8 @@ echo "<pre>$output</pre>";
 
 
 # String Operators
-### There are two string operators. The first is the concatenation operator ('.'), which returns the concatenation of its right and left arguments. The second is the concatenating assignment operator ('.='), which appends the argument on the right side to the argument on the left side.
+### There are two string operators - ('.') and ('.=')
+<aside class="notes"> The first is the concatenation operator ('.'), which returns the concatenation of its right and left arguments. The second is the concatenating assignment operator ('.='), which appends the argument on the right side to the argument on the left side. </aside>
 ```
 $a = "Hello ";
 $b = $a . "World!"; // now $b contains "Hello World!"
@@ -649,5 +674,3 @@ bool(false)
 ```
 
 ***
-
-# <i><b>AND THEIR ;) IS KOR</b></i>
