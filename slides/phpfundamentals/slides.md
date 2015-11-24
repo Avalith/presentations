@@ -1,5 +1,5 @@
 # PHP fundamentals part I
-<small>[Alexander Ivanov - Karamfil](http://karamfil.avalith.bg)</small>
+<small>[Dian Penchev - Habib](http://karamfil.avalith.bg)</small>
 
 ***
 
@@ -13,8 +13,7 @@
 * Objects
 * Resources
 * NULL
-* Callbacks / Callables
-* classes
+* Callbacks / Callables 
 
 
 # Booleans
@@ -72,13 +71,23 @@ $a = 0b11111111; // binary number (equivalent to 255 decimal)
 ### If PHP encounters a number beyond the bounds of the integer type, it will be interpreted as a float instead.
 * bounds on 32-bit system [-2147483647:2147483647]
 * bounds on 64-bit system [-9223372036854775807:9223372036854775807]
-* !!!
+
+```
+$large_number = 2147483647;
+var_dump($large_number);                     // int(2147483647)
+
+$large_number = 2147483648;
+var_dump($large_number);                     // float(2147483648)
+```
 
 
 ## Integer division
-There is no integer division operator in PHP. 1/2 yields the float 0.5. The value can be casted to an integer to round it towards zero, or the round() function provides finer control over rounding.
-
-function()
+### There is no integer division operator in PHP. 1/2 yields the float 0.5. The value can be casted to an integer to round it towards zero, or the round() function provides finer control over rounding.
+```
+var_dump(25/7);         // float(3.5714285714286) 
+var_dump((int) (25/7)); // int(3)
+var_dump(round(25/7));  // float(4) 
+```
 
 
 # Floating point numbers
@@ -178,16 +187,16 @@ This should print a capital 'A': A
 
 
 ### Nowdocs
-single-quoted strings what heredocs are to double-quoted strings. A nowdoc is specified similarly to a heredoc, but no parsing is done inside a nowdoc.
+### single-quoted strings what heredocs are to double-quoted strings. A nowdoc is specified similarly to a heredoc, but no parsing is done inside a nowdoc.
 ```
-$str = <<<EOD
+$str = <<<`EOD`
 Example of string
 using heredoc syntax.
 EOD;
 ```
 ```
 $name = 'MyName';
-echo <<<EOT
+echo <<<`EOT`
 My name is "$name".
 This should print a capital 'A': \x41
 EOT;
@@ -364,7 +373,8 @@ $a = 'hello';
 ```
 #### A variable variable takes the value of a variable and treats that as the name of a variable. In the above example, hello, can be used as the name of a variable by using two dollar signs. i.e.
 ```
-$$a = 'world';
+${$a} = 'world';
+${"asd"} = 'world';
 ```
 #### At this point two variables have been defined and stored in the PHP symbol tree: $a with contents "hello" and $hello with contents "world".
 ```
@@ -395,9 +405,6 @@ echo $_GET['username'];
 
 # Constants
 ### A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.
-
-
-# Read on php 7
 
 
 ### You can define a constant by using the define()-function or by using the const keyword outside a class definition as of PHP 5.3.0. Once a constant is defined, it can never be changed or undefined.
@@ -674,3 +681,4 @@ bool(false)
 ```
 
 ***
+
