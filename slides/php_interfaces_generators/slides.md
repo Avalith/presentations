@@ -56,13 +56,13 @@ Both range() and xrange() will result in the same output - 1 3 5 7 9
 
 ```
 function gen_one_to_three() {
-    for ($i = 1; $i <= 3; $i++) {
+    for(i = 1; $i <= 3; $i++) {
         yield $i;
     }
 }
 
 $generator = gen_one_to_three();
-foreach ($generator as $value) {
+foreach(generator as $value) {
     echo "$value ";
 }
 ```
@@ -79,7 +79,7 @@ $input = <<<'EOF'
 EOF;
 
 function input_parser($input) {
-    foreach (explode("\n", $input) as $line) {
+    foreach(xplode("\n", $input) as $line) {
         $fields = explode(';', $line);
         $id = array_shift($fields);
 
@@ -87,7 +87,7 @@ function input_parser($input) {
     }
 }
 
-foreach (input_parser($input) as $id => $fields) {
+foreach(nput_parser($input) as $id => $fields) {
     echo "$id:\n";
     echo "    $fields[0]\n";
     echo "    $fields[1]\n";
@@ -100,7 +100,7 @@ foreach (input_parser($input) as $id => $fields) {
 
 ```
 function gen_three_nulls() {
-    foreach (range(1, 3) as $i) {
+    foreach(ange(1, 3) as $i) {
         yield;
     }
 }
@@ -115,13 +115,13 @@ var_dump(iterator_to_array(gen_three_nulls()));
 function &gen_reference() {
     $value = 3;
 
-    while ($value > 0) {
+    while(value > 0) {
         yield $value;
     }
 }
 
-foreach (gen_reference() as &$number) {
-    echo (--$number).'... ';
+foreach(en_reference() as &$number) {
+    echo(-$number).'... ';
 }
 ```
 * Note that we can change $number within the loop, and
@@ -152,7 +152,7 @@ function eight() {
     yield 8;
 }
 
-foreach (count_to_ten() as $num) {
+foreach(ount_to_ten() as $num) {
     echo "$num ";
 }
 ```
@@ -185,7 +185,7 @@ function nine_ten() {
 }
 
 $gen = count_to_ten();
-foreach ($gen as $num) {
+foreach(gen as $num) {
     echo "$num ";
 }
 echo $gen->getReturn();
@@ -205,7 +205,7 @@ class LineIterator implements Iterator {
     protected $i;
  
     public function __construct($fileName) {
-        if (!$this->fileHandle = fopen($fileName, 'r')) {
+        if($this->fileHandle = fopen($fileName, 'r')) {
             throw new RuntimeException('Couldn\'t open file "' . $fileName . '"');
         }
     }
@@ -229,7 +229,7 @@ class LineIterator implements Iterator {
     }
  
     public function next() {
-        if (false !== $this->line) {
+        if(alse !== $this->line) {
             $this->line = fgets($this->fileHandle);
             $this->i++;
         }
@@ -245,11 +245,11 @@ class LineIterator implements Iterator {
 ### Generator
 ```
 function getLinesFromFile($fileName) {
-    if (!$fileHandle = fopen($fileName, 'r')) {
+    if($fileHandle = fopen($fileName, 'r')) {
         return;
     }
  
-    while (false !== $line = fgets($fileHandle)) {
+    while(alse !== $line = fgets($fileHandle)) {
         yield $line;
     }
  
@@ -269,11 +269,11 @@ Classes implementing Countable can be used with the count() function.
 Countable
 {
     /* Methods */
-    abstract public int count ( void )
+    abstract public int count(void)
 }
 ```
 
-* Countable::count — Count elements of an object
+* Countable::count - Count elements of an object
 
 
 ### OuterIterator
@@ -283,18 +283,18 @@ Classes implementing OuterIterator can be used to iterate over iterators.
 OuterIterator extends Iterator
 {
     /* Methods */
-    public Iterator getInnerIterator ( void )
+    public Iterator getInnerIterator(void)
 
     /* Inherited methods */
-    abstract public mixed Iterator::current ( void )
-    abstract public scalar Iterator::key ( void )
-    abstract public void Iterator::next ( void )
-    abstract public void Iterator::rewind ( void )
-    abstract public boolean Iterator::valid ( void )
+    abstract public mixed Iterator::current(void)
+    abstract public scalar Iterator::key(void)
+    abstract public void Iterator::next(void)
+    abstract public void Iterator::rewind(void)
+    abstract public boolean Iterator::valid(void)
 }
 ```
 
-* OuterIterator::getInnerIterator — Returns the inner iterator for the current entry.
+* OuterIterator::getInnerIterator - Returns the inner iterator for the current entry.
 
 
 ### RecursiveIterator
@@ -304,20 +304,20 @@ Classes implementing RecursiveIterator can be used to iterate over iterators rec
 RecursiveIterator extends Iterator
 {
     /* Methods */
-    public RecursiveIterator getChildren ( void )
-    public bool hasChildren ( void )
+    public RecursiveIterator getChildren(void)
+    public bool hasChildren(void)
     
     /* Inherited methods */
-    abstract public mixed Iterator::current ( void )
-    abstract public scalar Iterator::key ( void )
-    abstract public void Iterator::next ( void )
-    abstract public void Iterator::rewind ( void )
-    abstract public boolean Iterator::valid ( void )
+    abstract public mixed Iterator::current(void)
+    abstract public scalar Iterator::key(void)
+    abstract public void Iterator::next(void)
+    abstract public void Iterator::rewind(void)
+    abstract public boolean Iterator::valid(void)
 }
 ```
 
-* RecursiveIterator::getChildren — Returns an iterator for the current entry.
-* RecursiveIterator::hasChildren — Returns if an iterator can be created fot the current entry.
+* RecursiveIterator::getChildren - Returns an iterator for the current entry.
+* RecursiveIterator::hasChildren - Returns if an iterator can be created fot the current entry.
 
 
 ### SeekableIterator
@@ -325,73 +325,186 @@ RecursiveIterator extends Iterator
 SeekableIterator extends Iterator
 {
     /* Methods */
-    abstract public void seek ( int $position )
+    abstract public void seek(int $position)
     
     /* Inherited methods */
-    abstract public mixed Iterator::current ( void )
-    abstract public scalar Iterator::key ( void )
-    abstract public void Iterator::next ( void )
-    abstract public void Iterator::rewind ( void )
-    abstract public boolean Iterator::valid ( void )
+    abstract public mixed Iterator::current(void)
+    abstract public scalar Iterator::key(void)
+    abstract public void Iterator::next(void)
+    abstract public void Iterator::rewind(void)
+    abstract public boolean Iterator::valid(void)
 }
 ```
 
-* SeekableIterator::seek — Seeks to a position
+* SeekableIterator::seek - Seeks to a position
 
 ***
 
 ## Predefined Interfaces and Classes
-asd
-```
-```
 
 
 ### Traversable
-asd
 ```
+if(!is_array( $items) && !$items instanceof Traversable)
+{
+    // $items is not iterable
+    // Throw exception here
+}
 ```
+
+* Must be implemented by either IteratorAggregate or Iterator.
+* No methods, its only purpose is to be the base interface for all traversable classes.
+* Built-in classes that implement this interface can be used in a foreach construct and do not need to implement IteratorAggregate or Iterator.
 
 
 ### Iterator
-asd
+Interface for external iterators or objects that can be iterated themselves internally.
+
 ```
+Iterator extends Traversable {
+    /* Methods */
+    abstract public mixed current(void)
+    abstract public scalar key(void)
+    abstract public void next(void)
+    abstract public void rewind(void)
+    abstract public boolean valid(void)
+}
 ```
+
+* Iterator::current - Return the current element
+* Iterator::key - Return the key of the current element
+* Iterator::next - Move forward to next element
+* Iterator::rewind - Rewind the Iterator to the first element
+* Iterator::valid - Checks if current position is valid
 
 
 ### IteratorAggregate
-asd
+Interface to create an external Iterator.
+
 ```
+IteratorAggregate extends Traversable
+{
+    /* Methods */
+    abstract public Traversable getIterator(void)
+}
 ```
+
+* IteratorAggregate::getIterator - Retrieve an external iterator
 
 
 ### Throwable
-asd
+PHP classes cannot implement the Throwable interface directly, and must instead extend Exception.
+
 ```
+ Throwable {
+    /* Methods */
+    abstract public string getMessage(void)
+    abstract public int getCode(void)
+    abstract public string getFile(void)
+    abstract public int getLine(void)
+    abstract public array getTrace(void)
+    abstract public string getTraceAsString(void)
+    abstract public Throwable getPrevious(void)
+    abstract public string __toString(void)
+}
 ```
+
+* Throwable is the base interface for any object that can be thrown via a throw statement, including Error and Exception. 
+
+
+* Throwable::getMessage - Gets the message
+* Throwable::getCode - Gets the exception code
+* Throwable::getFile - Gets the file in which the exception occurred
+* Throwable::getLine - Gets the line on which the object was instantiated
+* Throwable::getTrace - Gets the stack trace
+* Throwable::getTraceAsString - Gets the stack trace as a string
+* Throwable::getPrevious - Returns the previous Throwable
+* Throwable::__toString - Gets a string representation of the thrown object
 
 
 ### ArrayAccess
-asd
+Interface to provide accessing objects as arrays.
+
 ```
+ArrayAccess
+{
+    /* Methods */
+    abstract public boolean offsetExists(mixed $offset)
+    abstract public mixed offsetGet(mixed $offset)
+    abstract public void offsetSet(mixed $offset, mixed $value)
+    abstract public void offsetUnset(mixed $offset)
+}
 ```
+
+* ArrayAccess::offsetExists — Whether an offset exists
+* ArrayAccess::offsetGet — Offset to retrieve
+* ArrayAccess::offsetSet — Assign a value to the specified offset
+* ArrayAccess::offsetUnset — Unset an offset
 
 
 ### Serializable
-asd
+Interface for customized serializing.
+
 ```
+Serializable
+{
+    /* Methods */
+    abstract public string serialize(void)
+    abstract public void unserialize(string $serialized)
+}
 ```
+
+* Serializable::serialize — String representation of object
+* Serializable::unserialize — Constructs the object
 
 
 ### Closure
-asd
+Class used to represent anonymous functions.
+
 ```
+Closure {
+    /* Methods */
+    private __construct(void)
+    public static Closure bind(Closure $closure, 
+        object $newthis [, mixed $newscope = "static" ])
+    public Closure bindTo(
+        object $newthis [, mixed $newscope = "static" ])
+    public mixed call(object $newthis [, mixed $... ])
+}
 ```
+
+* Closure::__construct — Constructor that disallows instantiation
+* Closure::bind — Duplicates a closure with a specific bound object and class scope
+* Closure::bindTo — Duplicates the closure with a new bound object and class scope
+* Closure::call — Binds and calls the closure
 
 
 ### Generator
-asd
+Generator objects are returned from generators and cannot be instantiated via new.
+
 ```
+Generator implements Iterator {
+    /* Methods */
+    public mixed current ( void )
+    public mixed key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public mixed send ( mixed $value )
+    public mixed throw ( Exception $exception )
+    public bool valid ( void )
+    public void __wakeup ( void )
+}
 ```
+
+
+* Generator::current — Get the yielded value
+* Generator::key — Get the yielded key
+* Generator::next — Resume execution of the generator
+* Generator::rewind — Rewind the iterator
+* Generator::send — Send a value to the generator
+* Generator::throw — Throw an exception into the generator
+* Generator::valid — Check if the iterator has been closed
+* Generator::__wakeup — Serialize callback
 
 ***
 
