@@ -10,7 +10,7 @@
 
 ***
 
-# What is Terminator
+# What is terminator
 
 
 ![Split Screen](slides/terminator/images/terminator.jpg)
