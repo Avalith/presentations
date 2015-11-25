@@ -273,7 +273,7 @@ Countable
 }
 ```
 
-* Countable::count - Count elements of an object
+* ::count - Count elements of an object
 
 
 ### OuterIterator
@@ -294,7 +294,7 @@ OuterIterator extends Iterator
 }
 ```
 
-* OuterIterator::getInnerIterator - Returns the inner iterator for the current entry.
+* ::getInnerIterator - Returns the inner iterator for the current entry.
 
 
 ### RecursiveIterator
@@ -316,8 +316,8 @@ RecursiveIterator extends Iterator
 }
 ```
 
-* RecursiveIterator::getChildren - Returns an iterator for the current entry.
-* RecursiveIterator::hasChildren - Returns if an iterator can be created fot the current entry.
+* ::getChildren - Returns an iterator for the current entry.
+* ::hasChildren - Returns if an iterator can be created fot the current entry.
 
 
 ### SeekableIterator
@@ -336,7 +336,7 @@ SeekableIterator extends Iterator
 }
 ```
 
-* SeekableIterator::seek - Seeks to a position
+* ::seek - Seeks to a position
 
 ***
 
@@ -371,11 +371,11 @@ Iterator extends Traversable {
 }
 ```
 
-* Iterator::current - Return the current element
-* Iterator::key - Return the key of the current element
-* Iterator::next - Move forward to next element
-* Iterator::rewind - Rewind the Iterator to the first element
-* Iterator::valid - Checks if current position is valid
+* ::current - Return the current element
+* ::key - Return the key of the current element
+* ::next - Move forward to next element
+* ::rewind - Rewind the Iterator to the first element
+* ::valid - Checks if current position is valid
 
 
 ### IteratorAggregate
@@ -389,7 +389,7 @@ IteratorAggregate extends Traversable
 }
 ```
 
-* IteratorAggregate::getIterator - Retrieve an external iterator
+* ::getIterator - Retrieve an external iterator
 
 
 ### Throwable
@@ -412,14 +412,14 @@ PHP classes cannot implement the Throwable interface directly, and must instead 
 * Throwable is the base interface for any object that can be thrown via a throw statement, including Error and Exception. 
 
 
-* Throwable::getMessage - Gets the message
-* Throwable::getCode - Gets the exception code
-* Throwable::getFile - Gets the file in which the exception occurred
-* Throwable::getLine - Gets the line on which the object was instantiated
-* Throwable::getTrace - Gets the stack trace
-* Throwable::getTraceAsString - Gets the stack trace as a string
-* Throwable::getPrevious - Returns the previous Throwable
-* Throwable::__toString - Gets a string representation of the thrown object
+* ::getMessage - Gets the message
+* ::getCode - Gets the exception code
+* ::getFile - Gets the file in which the exception occurred
+* ::getLine - Gets the line on which the object was instantiated
+* ::getTrace - Gets the stack trace
+* ::getTraceAsString - Gets the stack trace as a string
+* ::getPrevious - Returns the previous Throwable
+* ::__toString - Gets a string representation of the thrown object
 
 
 ### ArrayAccess
@@ -436,10 +436,10 @@ ArrayAccess
 }
 ```
 
-* ArrayAccess::offsetExists — Whether an offset exists
-* ArrayAccess::offsetGet — Offset to retrieve
-* ArrayAccess::offsetSet — Assign a value to the specified offset
-* ArrayAccess::offsetUnset — Unset an offset
+* ::offsetExists - Whether an offset exists
+* ::offsetGet - Offset to retrieve
+* ::offsetSet - Assign a value to the specified offset
+* ::offsetUnset - Unset an offset
 
 
 ### Serializable
@@ -454,8 +454,8 @@ Serializable
 }
 ```
 
-* Serializable::serialize — String representation of object
-* Serializable::unserialize — Constructs the object
+* ::serialize - String representation of object
+* ::unserialize - Constructs the object
 
 
 ### Closure
@@ -473,10 +473,10 @@ Closure {
 }
 ```
 
-* Closure::__construct — Constructor that disallows instantiation
-* Closure::bind — Duplicates a closure with a specific bound object and class scope
-* Closure::bindTo — Duplicates the closure with a new bound object and class scope
-* Closure::call — Binds and calls the closure
+* ::__construct - Constructor that disallows instantiation
+* ::bind - Duplicates a closure with a specific bound object and class scope
+* ::bindTo - Duplicates the closure with a new bound object and class scope
+* ::call - Binds and calls the closure
 
 
 ### Generator
@@ -497,14 +497,14 @@ Generator implements Iterator {
 ```
 
 
-* Generator::current — Get the yielded value
-* Generator::key — Get the yielded key
-* Generator::next — Resume execution of the generator
-* Generator::rewind — Rewind the iterator
-* Generator::send — Send a value to the generator
-* Generator::throw — Throw an exception into the generator
-* Generator::valid — Check if the iterator has been closed
-* Generator::__wakeup — Serialize callback
+* ::current - Get the yielded value
+* ::key - Get the yielded key
+* ::next - Resume execution of the generator
+* ::rewind - Rewind the iterator
+* ::send - Send a value to the generator
+* ::throw - Throw an exception into the generator
+* ::valid - Check if the iterator has been closed
+* ::__wakeup - Serialize callback
 
 ***
 
@@ -512,57 +512,333 @@ Generator implements Iterator {
 
 
 ### SplDoublyLinkedList
-asd
+The SplDoublyLinkedList class provides the main functionalities of a doubly linked list.
+
 ```
+SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+    /* Methods */
+    public __construct ( void )
+    public void add ( mixed $index , mixed $newval )
+    public mixed bottom ( void )
+    public int count ( void )
+    public mixed current ( void )
+    public int getIteratorMode ( void )
+    public bool isEmpty ( void )
+    public mixed key ( void )
+    public void next ( void )
+    public bool offsetExists ( mixed $index )
+    public mixed offsetGet ( mixed $index )
+    public void offsetSet ( mixed $index , mixed $newval )
+    public void offsetUnset ( mixed $index )
+    public mixed pop ( void )
+    public void prev ( void )
+    public void push ( mixed $value )
+    public void rewind ( void )
+    public string serialize ( void )
+    public void setIteratorMode ( int $mode )
+    public mixed shift ( void )
+    public mixed top ( void )
+    public void unserialize ( string $serialized )
+    public void unshift ( mixed $value )
+    public bool valid ( void )
+}
 ```
+
+
+* ::add - Add/insert a new value at the specified index
+* ::bottom - Peeks at the node from the beginning of the doubly linked list
+* ::__construct - Constructs a new doubly linked list
+* ::count - Counts the number of elements in the doubly linked list.
+* ::current - Return current array entry
+* ::getIteratorMode - Returns the mode of iteration
+
+
+* ::isEmpty - Checks whether the doubly linked list is empty.
+* ::key - Return current node index
+* ::next - Move to next entry
+* ::offsetExists - Returns whether the requested $index exists
+* ::offsetGet - Returns the value at the specified $index
+* ::offsetSet - Sets the value at the specified $index to $newval
+
+
+* ::offsetUnset - Unsets the value at the specified $index
+* ::pop - Pops a node from the end of the doubly linked list
+* ::prev - Move to previous entry
+* ::push - Pushes an element at the end of the doubly linked list
+* ::rewind - Rewind iterator back to the start
+
+
+* ::serialize - Serializes the storage
+* ::setIteratorMode - Sets the mode of iteration
+* ::shift - Shifts a node from the beginning of the doubly linked list
+* ::top - Peeks at the node from the end of the doubly linked list
+* ::unserialize - Unserializes the storage
+* ::unshift - Prepends the doubly linked list with an element
+* ::valid - Check whether the doubly linked list contains more nodes
 
 
 ### SplStack
-asd
+The SplStack class provides the main functionalities of a stack implemented using a doubly linked list.
+
 ```
+SplStack extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+    /* Methods */
+    __construct ( void )
+    void setIteratorMode ( int $mode )
+    
+    /* Inherited methods */
+    /* All SplDoublyLinkedList methods */
+}
 ```
+
+* ::__construct - Constructs a new stack implemented using a doubly linked list
+* ::setIteratorMode - Sets the mode of iteration
 
 
 ### SplQueue
-asd
+The SplQueue class provides the main functionalities of a queue implemented using a doubly linked list.
+
 ```
+SplQueue extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+    /* Methods */
+    __construct ( void )
+    mixed dequeue ( void )
+    void enqueue ( mixed $value )
+    void setIteratorMode ( int $mode )
+    
+    /* Inherited methods */
+    /* All SplDoublyLinkedList methods */
+}
 ```
+
+* ::__construct - Constructs a new queue implemented using a doubly linked list
+* ::dequeue - Dequeues a node from the queue
+* ::enqueue - Adds an element to the queue.
+* ::setIteratorMode - Sets the mode of iteration
 
 
 ### SplHeap
-asd
+The SplHeap class provides the main functionalities of a Heap.
+
 ```
+abstract SplHeap implements Iterator , Countable
+{
+    /* Methods */
+    public __construct ( void )
+    abstract protected int compare ( mixed $value1 , mixed $value2 )
+    public int count ( void )
+    public mixed current ( void )
+    public mixed extract ( void )
+    public void insert ( mixed $value )
+    public bool isEmpty ( void )
+    public mixed key ( void )
+    public void next ( void )
+    public void recoverFromCorruption ( void )
+    public void rewind ( void )
+    public mixed top ( void )
+    public bool valid ( void )
+}
 ```
+
+
+* ::compare - Compare elements in order to place them correctly in the heap while sifting up.
+* ::__construct - Constructs a new empty heap
+* ::count - Counts the number of elements in the heap.
+* ::current - Return current node pointed by the iterator
+* ::extract - Extracts a node from top of the heap and sift up.
+* ::insert - Inserts an element in the heap by sifting it up.
+* ::isEmpty - Checks whether the heap is empty.
+
+
+* ::key - Return current node index
+* ::next - Move to the next node
+* ::recoverFromCorruption - Recover from the corrupted state and allow further actions on the heap.
+* ::rewind - Rewind iterator back to the start (no-op)
+* ::top - Peeks at the node from the top of the heap
+* ::valid - Check whether the heap contains more nodes
 
 
 ### SplMaxHeap
-asd
+The SplMaxHeap class provides the main functionalities of a heap, keeping the maximum on the top.
+
 ```
+SplMaxHeap extends SplHeap implements Iterator , Countable
+{
+    /* Methods */
+    protected int compare ( mixed $value1 , mixed $value2 )
+    
+    /* Inherited methods */
+    /* All SplHeap methods */
+}
 ```
+
+* ::compare - Compare elements in order to place them correctly in the heap while sifting up.
 
 
 ### SplMinHeap
-asd
+The SplMinHeap class provides the main functionalities of a heap, keeping the minimum on the top.
+
 ```
+SplMinHeap extends SplHeap implements Iterator , Countable
+{
+    /* Methods */
+    protected int compare ( mixed $value1 , mixed $value2 )
+    
+    /* Inherited methods */
+    /* All SplHeap methods */
+}
 ```
+
+* ::compare - Compare elements in order to place them correctly in the heap while sifting up.
 
 
 ### SplPriorityQueue
-asd
+The SplPriorityQueue class provides the main functionalities of a prioritized queue, implemented using a max heap.
+
 ```
+SplPriorityQueue implements Iterator , Countable
+{
+    /* Methods */
+    public __construct ( void )
+    public int compare ( mixed $priority1 , mixed $priority2 )
+    public int count ( void )
+    public mixed current ( void )
+    public mixed extract ( void )
+    public void insert ( mixed $value , mixed $priority )
+    public bool isEmpty ( void )
+    public mixed key ( void )
+    public void next ( void )
+    public void recoverFromCorruption ( void )
+    public void rewind ( void )
+    public void setExtractFlags ( int $flags )
+    public mixed top ( void )
+    public bool valid ( void )
+}
 ```
+
+
+* ::compare - Compare priorities in order to place elements correctly in the heap while sifting up.
+* ::__construct - Constructs a new empty queue
+* ::count - Counts the number of elements in the queue.
+* ::current - Return current node pointed by the iterator
+* ::extract - Extracts a node from top of the heap and sift up.
+* ::insert - Inserts an element in the queue by sifting it up.
+* ::isEmpty - Checks whether the queue is empty.
+
+
+* ::key - Return current node index
+* ::next - Move to the next node
+* ::recoverFromCorruption - Recover from the corrupted state and allow further actions on the queue.
+* ::rewind - Rewind iterator back to the start (no-op)
+* ::setExtractFlags - Sets the mode of extraction
+* ::top - Peeks at the node from the top of the queue
+* ::valid - Check whether the queue contains more nodes
 
 
 ### SplFixedArray
-asd
+SplFixedArray an array with fixed length and allows only integers within the range as indexes.
+
 ```
+SplFixedArray implements Iterator , ArrayAccess , Countable
+{
+    /* Methods */
+    public __construct ([ int $size = 0 ] )
+    public int count ( void )
+    public mixed current ( void )
+    public static SplFixedArray fromArray ( array $array [, bool $save_indexes = true ] )
+    public int getSize ( void )
+    public int key ( void )
+    public void next ( void )
+    public bool offsetExists ( int $index )
+    public mixed offsetGet ( int $index )
+    public void offsetSet ( int $index , mixed $newval )
+    public void offsetUnset ( int $index )
+    public void rewind ( void )
+    public int setSize ( int $size )
+    public array toArray ( void )
+    public bool valid ( void )
+    public void __wakeup ( void )
+}
 ```
+
+
+* ::__construct - Constructs a new fixed array
+* ::count - Returns the size of the array
+* ::current - Return current array entry
+* ::fromArray - Import a PHP array in a SplFixedArray instance
+* ::getSize - Gets the size of the array
+* ::key - Return current array index
+* ::next - Move to next entry
+* ::offsetExists - Returns whether the requested index exists
+
+
+* ::offsetGet - Returns the value at the specified index
+* ::offsetSet - Sets a new value at a specified index
+* ::offsetUnset - Unsets the value at the specified $index
+* ::rewind - Rewind iterator back to the start
+* ::setSize - Change the size of an array
+* ::toArray - Returns a PHP array from the fixed array
+* ::valid - Check whether the array contains more elements
+* ::__wakeup - Reinitialises the array after being unserialised
 
 
 ### SplObjectStorage
-asd
+The SplObjectStorage class provides a map from objects to data or, by ignoring data, an object set.
+
 ```
+SplObjectStorage implements Countable , Iterator , Serializable , ArrayAccess
+{
+    /* Methods */
+    public void addAll ( SplObjectStorage $storage )
+    public void attach ( object $object [, mixed $data = NULL ] )
+    public bool contains ( object $object )
+    public int count ( void )
+    public object current ( void )
+    public void detach ( object $object )
+    public string getHash ( object $object )
+    public mixed getInfo ( void )
+    public int key ( void )
+    public void next ( void )
+    public bool offsetExists ( object $object )
+    public mixed offsetGet ( object $object )
+    public void offsetSet ( object $object [, mixed $data = NULL ] )
+    public void offsetUnset ( object $object )
+    public void removeAll ( SplObjectStorage $storage )
+    public void removeAllExcept ( SplObjectStorage $storage )
+    public void rewind ( void )
+    public string serialize ( void )
+    public void setInfo ( mixed $data )
+    public void unserialize ( string $serialized )
+    public bool valid ( void )
+}
 ```
+
+
+* ::addAll - Adds all objects from another storage
+* ::attach - Adds an object in the storage
+* ::contains - Checks if the storage contains a specific object
+* ::count - Returns the number of objects in the storage
+* ::current - Returns the current storage entry
+* ::detach - Removes an object from the storage
+* ::getHash - Calculate a unique identifier for the contained objects
+
+
+* ::getInfo - Returns the data associated with the current iterator entry
+* ::key - Returns the index at which the iterator currently is
+* ::next - Move to the next entry
+* ::offsetExists - Checks whether an object exists in the storage
+* ::offsetGet - Returns the data associated with an object
+* ::offsetSet - Associates data to an object in the storage
+* ::offsetUnset - Removes an object from the storage
+
+
+* ::removeAll - Removes objects contained in another storage from the current storage
+* ::removeAllExcept - Removes all objects except for those contained in another storage from the current storage
+* ::rewind - Rewind the iterator to the first storage element
+* ::serialize - Serializes the storage
+* ::setInfo - Sets the data associated with the current iterator entry
+* ::unserialize - Unserializes a storage from its string representation
+* ::valid - Returns if the current iterator entry is valid
 
 ***
 
