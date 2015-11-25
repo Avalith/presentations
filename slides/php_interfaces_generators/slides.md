@@ -345,7 +345,7 @@ SeekableIterator extends Iterator
 
 ### Traversable
 ```
-if(!is_array( $items) && !$items instanceof Traversable)
+if(!is_array($items) && !$items instanceof Traversable)
 {
     // $items is not iterable
     // Throw exception here
@@ -485,14 +485,14 @@ Generator objects are returned from generators and cannot be instantiated via ne
 ```
 Generator implements Iterator {
     /* Methods */
-    public mixed current ( void )
-    public mixed key ( void )
-    public void next ( void )
-    public void rewind ( void )
-    public mixed send ( mixed $value )
-    public mixed throw ( Exception $exception )
-    public bool valid ( void )
-    public void __wakeup ( void )
+    public mixed current(void)
+    public mixed key(void)
+    public void next(void)
+    public void rewind(void)
+    public mixed send(mixed $value)
+    public mixed throw(Exception $exception)
+    public bool valid(void)
+    public void __wakeup(void)
 }
 ```
 
@@ -517,30 +517,30 @@ The SplDoublyLinkedList class provides the main functionalities of a doubly link
 ```
 SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
     /* Methods */
-    public __construct ( void )
-    public void add ( mixed $index , mixed $newval )
-    public mixed bottom ( void )
-    public int count ( void )
-    public mixed current ( void )
-    public int getIteratorMode ( void )
-    public bool isEmpty ( void )
-    public mixed key ( void )
-    public void next ( void )
-    public bool offsetExists ( mixed $index )
-    public mixed offsetGet ( mixed $index )
-    public void offsetSet ( mixed $index , mixed $newval )
-    public void offsetUnset ( mixed $index )
-    public mixed pop ( void )
-    public void prev ( void )
-    public void push ( mixed $value )
-    public void rewind ( void )
-    public string serialize ( void )
-    public void setIteratorMode ( int $mode )
-    public mixed shift ( void )
-    public mixed top ( void )
-    public void unserialize ( string $serialized )
-    public void unshift ( mixed $value )
-    public bool valid ( void )
+    public __construct(void)
+    public void add(mixed $index , mixed $newval)
+    public mixed bottom(void)
+    public int count(void)
+    public mixed current(void)
+    public int getIteratorMode(void)
+    public bool isEmpty(void)
+    public mixed key(void)
+    public void next(void)
+    public bool offsetExists(mixed $index)
+    public mixed offsetGet(mixed $index)
+    public void offsetSet(mixed $index , mixed $newval)
+    public void offsetUnset(mixed $index)
+    public mixed pop(void)
+    public void prev(void)
+    public void push(mixed $value)
+    public void rewind(void)
+    public string serialize(void)
+    public void setIteratorMode(int $mode)
+    public mixed shift(void)
+    public mixed top(void)
+    public void unserialize(string $serialized)
+    public void unshift(mixed $value)
+    public bool valid(void)
 }
 ```
 
@@ -583,8 +583,8 @@ The SplStack class provides the main functionalities of a stack implemented usin
 ```
 SplStack extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
     /* Methods */
-    __construct ( void )
-    void setIteratorMode ( int $mode )
+    __construct(void)
+    void setIteratorMode(int $mode)
     
     /* Inherited methods */
     /* All SplDoublyLinkedList methods */
@@ -601,10 +601,10 @@ The SplQueue class provides the main functionalities of a queue implemented usin
 ```
 SplQueue extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
     /* Methods */
-    __construct ( void )
-    mixed dequeue ( void )
-    void enqueue ( mixed $value )
-    void setIteratorMode ( int $mode )
+    __construct(void)
+    mixed dequeue(void)
+    void enqueue(mixed $value)
+    void setIteratorMode(int $mode)
     
     /* Inherited methods */
     /* All SplDoublyLinkedList methods */
@@ -624,19 +624,19 @@ The SplHeap class provides the main functionalities of a Heap.
 abstract SplHeap implements Iterator , Countable
 {
     /* Methods */
-    public __construct ( void )
-    abstract protected int compare ( mixed $value1 , mixed $value2 )
-    public int count ( void )
-    public mixed current ( void )
-    public mixed extract ( void )
-    public void insert ( mixed $value )
-    public bool isEmpty ( void )
-    public mixed key ( void )
-    public void next ( void )
-    public void recoverFromCorruption ( void )
-    public void rewind ( void )
-    public mixed top ( void )
-    public bool valid ( void )
+    public __construct(void)
+    abstract protected int compare(mixed $value1 , mixed $value2)
+    public int count(void)
+    public mixed current(void)
+    public mixed extract(void)
+    public void insert(mixed $value)
+    public bool isEmpty(void)
+    public mixed key(void)
+    public void next(void)
+    public void recoverFromCorruption(void)
+    public void rewind(void)
+    public mixed top(void)
+    public bool valid(void)
 }
 ```
 
@@ -653,7 +653,7 @@ abstract SplHeap implements Iterator , Countable
 * ::key - Return current node index
 * ::next - Move to the next node
 * ::recoverFromCorruption - Recover from the corrupted state and allow further actions on the heap.
-* ::rewind - Rewind iterator back to the start (no-op)
+* ::rewind - Rewind iterator back to the start(no-op)
 * ::top - Peeks at the node from the top of the heap
 * ::valid - Check whether the heap contains more nodes
 
@@ -665,7 +665,7 @@ The SplMaxHeap class provides the main functionalities of a heap, keeping the ma
 SplMaxHeap extends SplHeap implements Iterator , Countable
 {
     /* Methods */
-    protected int compare ( mixed $value1 , mixed $value2 )
+    protected int compare(mixed $value1 , mixed $value2)
     
     /* Inherited methods */
     /* All SplHeap methods */
@@ -682,7 +682,7 @@ The SplMinHeap class provides the main functionalities of a heap, keeping the mi
 SplMinHeap extends SplHeap implements Iterator , Countable
 {
     /* Methods */
-    protected int compare ( mixed $value1 , mixed $value2 )
+    protected int compare(mixed $value1 , mixed $value2)
     
     /* Inherited methods */
     /* All SplHeap methods */
@@ -699,20 +699,20 @@ The SplPriorityQueue class provides the main functionalities of a prioritized qu
 SplPriorityQueue implements Iterator , Countable
 {
     /* Methods */
-    public __construct ( void )
-    public int compare ( mixed $priority1 , mixed $priority2 )
-    public int count ( void )
-    public mixed current ( void )
-    public mixed extract ( void )
-    public void insert ( mixed $value , mixed $priority )
-    public bool isEmpty ( void )
-    public mixed key ( void )
-    public void next ( void )
-    public void recoverFromCorruption ( void )
-    public void rewind ( void )
-    public void setExtractFlags ( int $flags )
-    public mixed top ( void )
-    public bool valid ( void )
+    public __construct(void)
+    public int compare(mixed $priority1 , mixed $priority2)
+    public int count(void)
+    public mixed current(void)
+    public mixed extract(void)
+    public void insert(mixed $value , mixed $priority)
+    public bool isEmpty(void)
+    public mixed key(void)
+    public void next(void)
+    public void recoverFromCorruption(void)
+    public void rewind(void)
+    public void setExtractFlags(int $flags)
+    public mixed top(void)
+    public bool valid(void)
 }
 ```
 
@@ -729,7 +729,7 @@ SplPriorityQueue implements Iterator , Countable
 * ::key - Return current node index
 * ::next - Move to the next node
 * ::recoverFromCorruption - Recover from the corrupted state and allow further actions on the queue.
-* ::rewind - Rewind iterator back to the start (no-op)
+* ::rewind - Rewind iterator back to the start(no-op)
 * ::setExtractFlags - Sets the mode of extraction
 * ::top - Peeks at the node from the top of the queue
 * ::valid - Check whether the queue contains more nodes
@@ -742,22 +742,22 @@ SplFixedArray an array with fixed length and allows only integers within the ran
 SplFixedArray implements Iterator , ArrayAccess , Countable
 {
     /* Methods */
-    public __construct ([ int $size = 0 ] )
-    public int count ( void )
-    public mixed current ( void )
-    public static SplFixedArray fromArray ( array $array [, bool $save_indexes = true ] )
-    public int getSize ( void )
-    public int key ( void )
-    public void next ( void )
-    public bool offsetExists ( int $index )
-    public mixed offsetGet ( int $index )
-    public void offsetSet ( int $index , mixed $newval )
-    public void offsetUnset ( int $index )
-    public void rewind ( void )
-    public int setSize ( int $size )
-    public array toArray ( void )
-    public bool valid ( void )
-    public void __wakeup ( void )
+    public __construct([ int $size = 0 ])
+    public int count(void)
+    public mixed current(void)
+    public static SplFixedArray fromArray(array $array [, bool $save_indexes = true ])
+    public int getSize(void)
+    public int key(void)
+    public void next(void)
+    public bool offsetExists(int $index)
+    public mixed offsetGet(int $index)
+    public void offsetSet(int $index , mixed $newval)
+    public void offsetUnset(int $index)
+    public void rewind(void)
+    public int setSize(int $size)
+    public array toArray(void)
+    public bool valid(void)
+    public void __wakeup(void)
 }
 ```
 
@@ -789,27 +789,27 @@ The SplObjectStorage class provides a map from objects to data or, by ignoring d
 SplObjectStorage implements Countable , Iterator , Serializable , ArrayAccess
 {
     /* Methods */
-    public void addAll ( SplObjectStorage $storage )
-    public void attach ( object $object [, mixed $data = NULL ] )
-    public bool contains ( object $object )
-    public int count ( void )
-    public object current ( void )
-    public void detach ( object $object )
-    public string getHash ( object $object )
-    public mixed getInfo ( void )
-    public int key ( void )
-    public void next ( void )
-    public bool offsetExists ( object $object )
-    public mixed offsetGet ( object $object )
-    public void offsetSet ( object $object [, mixed $data = NULL ] )
-    public void offsetUnset ( object $object )
-    public void removeAll ( SplObjectStorage $storage )
-    public void removeAllExcept ( SplObjectStorage $storage )
-    public void rewind ( void )
-    public string serialize ( void )
-    public void setInfo ( mixed $data )
-    public void unserialize ( string $serialized )
-    public bool valid ( void )
+    public void addAll(SplObjectStorage $storage)
+    public void attach(object $object [, mixed $data = NULL ])
+    public bool contains(object $object)
+    public int count(void)
+    public object current(void)
+    public void detach(object $object)
+    public string getHash(object $object)
+    public mixed getInfo(void)
+    public int key(void)
+    public void next(void)
+    public bool offsetExists(object $object)
+    public mixed offsetGet(object $object)
+    public void offsetSet(object $object [, mixed $data = NULL ])
+    public void offsetUnset(object $object)
+    public void removeAll(SplObjectStorage $storage)
+    public void removeAllExcept(SplObjectStorage $storage)
+    public void rewind(void)
+    public string serialize(void)
+    public void setInfo(mixed $data)
+    public void unserialize(string $serialized)
+    public bool valid(void)
 }
 ```
 
@@ -994,19 +994,321 @@ asd
 
 
 ### SplFileInfo
-asd
+The SplFileInfo class offers a high-level object oriented interface to information for an individual file.
+
 ```
+ SplFileInfo
+ {
+    /* Methods */
+    public __construct(string $file_name)
+    public int getATime(void)
+    public string getBasename([ string $suffix ])
+    public int getCTime(void)
+    public string getExtension(void)
+    public SplFileInfo getFileInfo([ string $class_name ])
+    public string getFilename(void)
+    public int getGroup(void)
+    public int getInode(void)
+    public string getLinkTarget(void)
+    public int getMTime(void)
+    public int getOwner(void)
+    public string getPath(void)
+    public SplFileInfo getPathInfo([ string $class_name ])
+    public string getPathname(void)
+    public int getPerms(void)
+    public string getRealPath(void)
+    public int getSize(void)
+    public string getType(void)
+    public bool isDir(void)
+    public bool isExecutable(void)
+    public bool isFile(void)
+    public bool isLink(void)
+    public bool isReadable(void)
+    public bool isWritable(void)
+    public SplFileObject openFile([ string $open_mode = "r" 
+        [, bool $use_include_path = false 
+        [, resource $context = NULL ]]])
+    public void setFileClass([ string $class_name = "SplFileObject" ])
+    public void setInfoClass([ string $class_name = "SplFileInfo" ])
+    public void __toString(void)
+}
 ```
+
+
+* ::__construct - Construct a new SplFileInfo object
+* ::getATime - Gets last access time of the file
+* ::getBasename - Gets the base name of the file
+* ::getCTime - Gets the inode change time
+* ::getExtension - Gets the file extension
+* ::getFileInfo - Gets an SplFileInfo object for the file
+* ::getFilename - Gets the filename
+
+
+* ::getGroup - Gets the file group
+* ::getInode - Gets the inode for the file
+* ::getLinkTarget - Gets the target of a link
+* ::getMTime - Gets the last modified time
+* ::getOwner - Gets the owner of the file
+* ::getPath - Gets the path without filename
+* ::getPathInfo - Gets an SplFileInfo object for the path
+
+
+* ::getPathname - Gets the path to the file
+* ::getPerms - Gets file permissions
+* ::getRealPath - Gets absolute path to file
+* ::getSize - Gets file size
+* ::getType - Gets file type
+* ::isDir - Tells if the file is a directory
+* ::isExecutable - Tells if the file is executable
+* ::isFile - Tells if the object references a regular file
+
+
+* ::isLink - Tells if the file is a link
+* ::isReadable - Tells if file is readable
+* ::isWritable - Tells if the entry is writable
+* ::openFile - Gets an SplFileObject object for the file
+* ::setFileClass - Sets the class used with SplFileInfo::openFile
+* ::setInfoClass - Sets the class used with SplFileInfo::getFileInfo and SplFileInfo::getPathInfo
+* ::__toString - Returns the path to the file as a string
 
 
 ### SplFileObject
-asd
+The SplFileObject class offers an object oriented interface for a file.
+
 ```
+ SplFileObject extends SplFileInfo implements RecursiveIterator , SeekableIterator
+ {
+    /* Constants */
+    const integer DROP_NEW_LINE = 1 ;
+    const integer READ_AHEAD = 2 ;
+    const integer SKIP_EMPTY = 4 ;
+    const integer READ_CSV = 8 ;
+    
+    /* Methods */
+    public string|array current(void)
+    public bool eof(void)
+    public bool fflush(void)
+    public string fgetc(void)
+    public array fgetcsv([ string $delimiter = "," 
+        [, string $enclosure = "\"" [, string $escape = "\\" ]]])
+    public string fgets(void)
+    public string fgetss([ string $allowable_tags ])
+    public bool flock(int $operation [, int &$wouldblock ])
+    public int fpassthru(void)
+    public int fputcsv(array $fields [, string $delimiter = "," 
+        [, string $enclosure = '"' [, string $escape = "\" ]]])
+    public string fread(int $length)
+    public mixed fscanf(string $format [, mixed &$... ])
+    public int fseek(int $offset [, int $whence = SEEK_SET ])
+    public array fstat(void)
+    public int ftell(void)
+    public bool ftruncate(int $size)
+    public int fwrite(string $str [, int $length ])
+    public void getChildren(void)
+    public array getCsvControl(void)
+    public int getFlags(void)
+    public int getMaxLineLen(void)
+    public bool hasChildren(void)
+    public int key(void)
+    public void next(void)
+    public void rewind(void)
+    public void seek(int $line_pos)
+    public void setCsvControl([ string $delimiter = "," 
+        [, string $enclosure = "\"" [, string $escape = "\\" ]]])
+    public void setFlags(int $flags)
+    public void setMaxLineLen(int $max_len)
+    public void __toString(void)
+    public bool valid(void)
+    
+    /* Inherited methods */
+    /* All SplFileInfo methods */
 ```
+
+
+* ::DROP_NEW_LINE - Drop newlines at the end of a line.
+* ::READ_AHEAD - Read on rewind/next.
+* ::SKIP_EMPTY - Skips empty lines in the file. This requires the READ_AHEAD flag be enabled, to work as expected.
+* ::READ_CSV - Read lines as CSV rows.
+
+
+* ::__construct - Construct a new file object.
+* ::current - Retrieve current line of file
+* ::eof - Reached end of file
+* ::fflush - Flushes the output to the file
+* ::fgetc - Gets character from file
+* ::fgetcsv - Gets line from file and parse as CSV fields
+* ::fgets - Gets line from file
+* ::fgetss - Gets line from file and strip HTML tags
+
+
+* ::flock - Portable file locking
+* ::fpassthru - Output all remaining data on a file pointer
+* ::fputcsv - Write a field array as a CSV line
+* ::fread - Read from file
+* ::fscanf - Parses input from file according to a format
+* ::fseek - Seek to a position
+* ::fstat - Gets information about the file
+* ::ftell - Return current file position
+* ::ftruncate - Truncates the file to a given length
+
+
+* ::fwrite - Write to file
+* ::getChildren - No purpose
+* ::getCsvControl - Get the delimiter and enclosure character for CSV
+* ::getCurrentLine - Alias of SplFileObject::fgets
+* ::getFlags - Gets flags for the SplFileObject
+* ::getMaxLineLen - Get maximum line length
+* ::hasChildren - SplFileObject does not have children
+* ::key - Get line number
+
+
+* ::next - Read next line
+* ::rewind - Rewind the file to the first line
+* ::seek - Seek to specified line
+* ::setCsvControl - Set the delimiter and enclosure character for CSV
+* ::setFlags - Sets flags for the SplFileObject
+* ::setMaxLineLen - Set maximum line length
+* ::__toString - Alias of SplFileObject::current
+* ::valid - Not at EOF
+
 
 
 ### SplTempFileObject
-asd
+The SplTempFileObject class offers an object oriented interface for a temporary file.
+
 ```
+SplTempFileObject extends SplFileObject implements SeekableIterator , RecursiveIterator
+{
+    /* Methods */
+    public __construct([ int $max_memory ])
+    
+    /* Inherited methods */
+    /* All SplFileObject methods */
+}
 ```
 
+* ::__construct - Construct a new temporary file object
+
+***
+
+## Miscellaneous Classes and Interfaces
+
+
+### ArrayObject
+This class allows objects to work as arrays.
+
+```
+ArrayObject implements IteratorAggregate , ArrayAccess , Serializable , Countable
+{
+    /* Constants */
+    const integer STD_PROP_LIST = 1 ;
+    const integer ARRAY_AS_PROPS = 2 ;
+    
+    /* Methods */
+    public __construct([ mixed $input = [] [, int $flags = 0 
+        [, string $iterator_class = "ArrayIterator" ]]])
+    public void append(mixed $value)
+    public void asort(void)
+    public int count(void)
+    public array exchangeArray(mixed $input)
+    public array getArrayCopy(void)
+    public int getFlags(void)
+    public ArrayIterator getIterator(void)
+    public string getIteratorClass(void)
+    public void ksort(void)
+    public void natcasesort(void)
+    public void natsort(void)
+    public bool offsetExists(mixed $index)
+    public mixed offsetGet(mixed $index)
+    public void offsetSet(mixed $index , mixed $newval)
+    public void offsetUnset(mixed $index)
+    public string serialize(void)
+    public void setFlags(int $flags)
+    public void setIteratorClass(string $iterator_class)
+    public void uasort(callable $cmp_function)
+    public void uksort(callable $cmp_function)
+    public void unserialize(string $serialized)
+}
+```
+
+
+* ::STD_PROP_LIST - Properties of the object have their normal functionality when accessed as list (var_dump, foreach, etc.).
+* ::ARRAY_AS_PROPS - Entries can be accessed as properties (read and write).
+
+
+* ::append - Appends the value
+* ::asort - Sort the entries by value
+* ::__construct - Construct a new array object
+* ::count - Get the number of public properties in the ArrayObject
+* ::exchangeArray - Exchange the array for another one.
+* ::getArrayCopy - Creates a copy of the ArrayObject.
+* ::getFlags - Gets the behavior flags.
+
+
+* ::getIterator - Create a new iterator from an ArrayObject instance
+* ::getIteratorClass - Gets the iterator classname for the ArrayObject.
+* ::ksort - Sort the entries by key
+* ::natcasesort - Sort an array using a case insensitive "natural order" algorithm
+* ::natsort - Sort entries using a "natural order" algorithm
+* ::offsetExists - Returns whether the requested index exists
+* ::offsetGet - Returns the value at the specified index
+
+
+* ::offsetSet - Sets the value at the specified index to newval
+* ::offsetUnset - Unsets the value at the specified index
+* ::serialize - Serialize an ArrayObject
+* ::setFlags - Sets the behavior flags.
+* ::setIteratorClass - Sets the iterator classname for the ArrayObject.
+* ::uasort - Sort the entries with a user-defined comparison function and maintain key association
+* ::uksort - Sort the entries by keys using a user-defined comparison function
+* ::unserialize - Unserialize an ArrayObject
+
+
+### SplObserver
+The SplObserver interface is used alongside SplSubject to implement the Observer Design Pattern.
+
+```
+SplObserver
+{
+    /* Methods */
+    abstract public void update(SplSubject $subject)
+}
+```
+
+* ::update — Receive update from subject
+
+
+### SplSubject
+The SplSubject interface is used alongside SplObserver to implement the Observer Design Pattern.
+
+```
+SplSubject
+{
+    /* Methods */
+    abstract public void attach(SplObserver $observer)
+    abstract public void detach(SplObserver $observer)
+    abstract public void notify(void)
+}
+```
+
+* ::attach — Attach an SplObserver
+* ::detach — Detach an observer
+* ::notify — Notify an observer
+
+***
+
+### Library
+
+* https://secure.php.net/manual/en/language.generators.php
+
+* https://secure.php.net/manual/en/spl.interfaces.php
+
+* https://secure.php.net/manual/en/reserved.interfaces.php
+
+* https://secure.php.net/manual/en/book.spl.php
+
+***
+
+# THE
+(FUCKING ANNOYING THIS WAS)
+# END
