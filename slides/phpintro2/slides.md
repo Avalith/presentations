@@ -151,13 +151,14 @@ foreach($featured as $key => $value)
 
 ### References and foreach
 ```
-foreach(array(1,2,3) as &$row)
+$value = array(1,2,3);
+
+foreach($value as $key => &$row)
 {
-	$value = $value * 2
+	$row = $row * 2;
+	// $value[$key] = $row * 2
 }
 
-// Since the reference is still pointing at the last element in the loop we need to unset
-unset($value)
 ```
 
 
