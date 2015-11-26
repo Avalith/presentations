@@ -1,4 +1,4 @@
-#PHP Generators & Standard PHP Library (SPL) shit
+#PHP Generators & Standard PHP Library(SPL) shit
 
 ***
 
@@ -515,10 +515,10 @@ Generator implements Iterator {
 The SplDoublyLinkedList class provides the main functionalities of a doubly linked list.
 
 ```
-SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+SplDoublyLinkedList implements Iterator, ArrayAccess, Countable {
     /* Methods */
     public __construct(void)
-    public void add(mixed $index , mixed $newval)
+    public void add(mixed $index, mixed $newval)
     public mixed bottom(void)
     public int count(void)
     public mixed current(void)
@@ -528,7 +528,7 @@ SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
     public void next(void)
     public bool offsetExists(mixed $index)
     public mixed offsetGet(mixed $index)
-    public void offsetSet(mixed $index , mixed $newval)
+    public void offsetSet(mixed $index, mixed $newval)
     public void offsetUnset(mixed $index)
     public mixed pop(void)
     public void prev(void)
@@ -581,7 +581,7 @@ SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
 The SplStack class provides the main functionalities of a stack implemented using a doubly linked list.
 
 ```
-SplStack extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+SplStack extends SplDoublyLinkedList implements Iterator, ArrayAccess, Countable {
     /* Methods */
     __construct(void)
     void setIteratorMode(int $mode)
@@ -599,7 +599,7 @@ SplStack extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countab
 The SplQueue class provides the main functionalities of a queue implemented using a doubly linked list.
 
 ```
-SplQueue extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+SplQueue extends SplDoublyLinkedList implements Iterator, ArrayAccess, Countable {
     /* Methods */
     __construct(void)
     mixed dequeue(void)
@@ -621,11 +621,11 @@ SplQueue extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countab
 The SplHeap class provides the main functionalities of a Heap.
 
 ```
-abstract SplHeap implements Iterator , Countable
+abstract SplHeap implements Iterator, Countable
 {
     /* Methods */
     public __construct(void)
-    abstract protected int compare(mixed $value1 , mixed $value2)
+    abstract protected int compare(mixed $value1, mixed $value2)
     public int count(void)
     public mixed current(void)
     public mixed extract(void)
@@ -662,10 +662,10 @@ abstract SplHeap implements Iterator , Countable
 The SplMaxHeap class provides the main functionalities of a heap, keeping the maximum on the top.
 
 ```
-SplMaxHeap extends SplHeap implements Iterator , Countable
+SplMaxHeap extends SplHeap implements Iterator, Countable
 {
     /* Methods */
-    protected int compare(mixed $value1 , mixed $value2)
+    protected int compare(mixed $value1, mixed $value2)
     
     /* Inherited methods */
     /* All SplHeap methods */
@@ -679,10 +679,10 @@ SplMaxHeap extends SplHeap implements Iterator , Countable
 The SplMinHeap class provides the main functionalities of a heap, keeping the minimum on the top.
 
 ```
-SplMinHeap extends SplHeap implements Iterator , Countable
+SplMinHeap extends SplHeap implements Iterator, Countable
 {
     /* Methods */
-    protected int compare(mixed $value1 , mixed $value2)
+    protected int compare(mixed $value1, mixed $value2)
     
     /* Inherited methods */
     /* All SplHeap methods */
@@ -696,15 +696,15 @@ SplMinHeap extends SplHeap implements Iterator , Countable
 The SplPriorityQueue class provides the main functionalities of a prioritized queue, implemented using a max heap.
 
 ```
-SplPriorityQueue implements Iterator , Countable
+SplPriorityQueue implements Iterator, Countable
 {
     /* Methods */
     public __construct(void)
-    public int compare(mixed $priority1 , mixed $priority2)
+    public int compare(mixed $priority1, mixed $priority2)
     public int count(void)
     public mixed current(void)
     public mixed extract(void)
-    public void insert(mixed $value , mixed $priority)
+    public void insert(mixed $value, mixed $priority)
     public bool isEmpty(void)
     public mixed key(void)
     public void next(void)
@@ -739,7 +739,7 @@ SplPriorityQueue implements Iterator , Countable
 SplFixedArray an array with fixed length and allows only integers within the range as indexes.
 
 ```
-SplFixedArray implements Iterator , ArrayAccess , Countable
+SplFixedArray implements Iterator, ArrayAccess, Countable
 {
     /* Methods */
     public __construct([ int $size = 0 ])
@@ -751,7 +751,7 @@ SplFixedArray implements Iterator , ArrayAccess , Countable
     public void next(void)
     public bool offsetExists(int $index)
     public mixed offsetGet(int $index)
-    public void offsetSet(int $index , mixed $newval)
+    public void offsetSet(int $index, mixed $newval)
     public void offsetUnset(int $index)
     public void rewind(void)
     public int setSize(int $size)
@@ -786,7 +786,7 @@ SplFixedArray implements Iterator , ArrayAccess , Countable
 The SplObjectStorage class provides a map from objects to data or, by ignoring data, an object set.
 
 ```
-SplObjectStorage implements Countable , Iterator , Serializable , ArrayAccess
+SplObjectStorage implements Countable, Iterator, Serializable, ArrayAccess
 {
     /* Methods */
     public void addAll(SplObjectStorage $storage)
@@ -846,147 +846,891 @@ SplObjectStorage implements Countable , Iterator , Serializable , ArrayAccess
 
 
 ### AppendIterator
-asd
+An Iterator that iterates over several iterators one after the other.
+
 ```
+AppendIterator extends IteratorIterator implements OuterIterator
+{
+    /* Methods */
+    public __construct(void)
+    public void append(Iterator $iterator)
+    public mixed current(void)
+    public void getArrayIterator(void)
+    public Iterator getInnerIterator(void)
+    public int getIteratorIndex(void)
+    public scalar key(void)
+    public void next(void)
+    public void rewind(void)
+    public bool valid(void)
+    
+    /* Inherited methods */
+    /* All IteratorIterator methods */
+}
 ```
+
+
+* ::append - Appends an iterator
+* ::__construct - Constructs an AppendIterator
+* ::current - Gets the current value
+* ::getArrayIterator - Gets the ArrayIterator
+* ::getInnerIterator - Gets the inner iterator
+* ::getIteratorIndex - Gets an index of iterators
+* ::key - Gets the current key
+* ::next - Moves to the next element
+* ::rewind - Rewinds the Iterator
+* ::valid - Checks validity of the current element
 
 
 ### ArrayIterator
-asd
+This iterator allows to unset and modify values and keys while iterating over Arrays and Objects.
+
 ```
+ArrayIterator implements ArrayAccess, SeekableIterator, Countable, Serializable
+{
+    /* Methods */
+    public void append(mixed $value)
+    public void asort(void)
+    public __construct([ mixed $array = array() [, int $flags = 0 ]])
+    public int count(void)
+    public mixed current(void)
+    public array getArrayCopy(void)
+    public void getFlags(void)
+    public mixed key(void)
+    public void ksort(void)
+    public void natcasesort(void)
+    public void natsort(void)
+    public void next(void)
+    public void offsetExists(string $index)
+    public mixed offsetGet(string $index)
+    public void offsetSet(string $index, string $newval)
+    public void offsetUnset(string $index)
+    public void rewind(void)
+    public void seek(int $position)
+    public string serialize(void)
+    public void setFlags(string $flags)
+    public void uasort(string $cmp_function)
+    public void uksort(string $cmp_function)
+    public string unserialize(string $serialized)
+    public bool valid(void)
+}
 ```
+
+
+* ::append - Append an element
+* ::asort - Sort array by values
+* ::__construct - Construct an ArrayIterator
+* ::count - Count elements
+* ::current - Return current array entry
+* ::getArrayCopy - Get array copy
+* ::getFlags - Get flags
+* ::key - Return current array key
+* ::ksort - Sort array by keys
+* ::natcasesort - Sort an array naturally, case insensitive
+* ::natsort - Sort an array naturally
+* ::next - Move to next entry
+* ::offsetExists - Check if offset exists
+
+
+* ::offsetGet - Get value for an offset
+* ::offsetSet - Set value for an offset
+* ::offsetUnset - Unset value for an offset
+* ::rewind - Rewind array back to the start
+* ::seek - Seek to position
+* ::serialize - Serialize
+* ::setFlags - Set behaviour flags
+* ::uasort - User defined sort
+* ::uksort - User defined sort
+* ::unserialize - Unserialize
+* ::valid - Check whether array contains more entries
 
 
 ### CachingIterator
-asd
+This object supports cached iteration over another iterator.
+
 ```
+CachingIterator extends IteratorIterator implements OuterIterator, ArrayAccess, Countable
+{
+    /* Constants */
+    const integer CALL_TOSTRING = 1;
+    const integer CATCH_GET_CHILD = 16;
+    const integer TOSTRING_USE_KEY = 2;
+    const integer TOSTRING_USE_CURRENT = 4;
+    const integer TOSTRING_USE_INNER = 8;
+    const integer FULL_CACHE = 256;
+    
+    /* Methods */
+    public __construct ( Iterator $iterator 
+        [, int $flags = self::CALL_TOSTRING ] )
+    public int count ( void )
+    public void current ( void )
+    public array getCache ( void )
+    public int getFlags ( void )
+    public Iterator getInnerIterator ( void )
+    public void hasNext ( void )
+    public scalar key ( void )
+    public void next ( void )
+    public void offsetExists ( string $index )
+    public void offsetGet ( string $index )
+    public void offsetSet ( string $index, string $newval )
+    public void offsetUnset ( string $index )
+    public void rewind ( void )
+    public void setFlags ( int $flags )
+    public void __toString ( void )
+    public void valid ( void )
+}
 ```
+
+
+* ::CALL_TOSTRING - Convert every element to string.
+* ::CATCH_GET_CHILD - Don't throw exception in accessing children.
+* ::TOSTRING_USE_KEY - Use key for conversion to string.
+* ::TOSTRING_USE_CURRENT - Use current for conversion to string.
+* ::TOSTRING_USE_INNER - Use inner for conversion to string.
+* ::FULL_CACHE - Cache all read data.
+
+
+* ::__construct - Construct a new CachingIterator object for the iterator.
+* ::count - The number of elements in the iterator
+* ::current - Return the current element
+* ::getCache - Retrieve the contents of the cache
+* ::getFlags - Get flags used
+* ::getInnerIterator - Returns the inner iterator
+* ::hasNext - Check whether the inner iterator has a valid next element
+* ::key - Return the key for the current element
+* ::next - Move the iterator forward
+
+
+* ::offsetExists - The offsetExists purpose
+* ::offsetGet - The offsetGet purpose
+* ::offsetSet - The offsetSet purpose
+* ::offsetUnset - The offsetUnset purpose
+* ::rewind - Rewind the iterator
+* ::setFlags - The setFlags purpose
+* ::__toString - Return the string representation of the current element
+* ::valid - Check whether the current element is valid
 
 
 ### CallbackFilterIterator
-asd
+The callback should accept the current item, the current key and the iterator.
+
 ```
+CallbackFilterIterator extends FilterIterator implements OuterIterator
+{
+    /* Methods */
+    public __construct ( Iterator $iterator, callable $callback )
+    public string accept ( void )
+    
+    /* Inherited methods */
+    /* All FilterIterator methods */
+}
 ```
+
+* ::accept - Calls the callback with the current value, the current key and the inner iterator as arguments
+* ::__construct - Create a filtered iterator from another iterator
 
 
 ### DirectoryIterator
-asd
+The DirectoryIterator class provides a simple interface for viewing the contents of filesystem directories.
+
 ```
+DirectoryIterator extends SplFileInfo implements SeekableIterator
+{
+    /* Methods */
+    public __construct ( string $path )
+    public DirectoryIterator current ( void )
+    public int getATime ( void )
+    public string getBasename ([ string $suffix ] )
+    public int getCTime ( void )
+    public string getExtension ( void )
+    public string getFilename ( void )
+    public int getGroup ( void )
+    public int getInode ( void )
+    public int getMTime ( void )
+    public int getOwner ( void )
+    public string getPath ( void )
+    public string getPathname ( void )
+    public int getPerms ( void )
+    public int getSize ( void )
+    public string getType ( void )
+    public bool isDir ( void )
+    public bool isDot ( void )
+    public bool isExecutable ( void )
+    public bool isFile ( void )
+    public bool isLink ( void )
+    public bool isReadable ( void )
+    public bool isWritable ( void )
+    public string key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public void seek ( int $position )
+    public string __toString ( void )
+    public bool valid ( void )
+}
 ```
+
+
+* __construct - Constructs a new directory iterator from a path
+* ::current - Return the current DirectoryIterator item.
+* ::getATime - Get last access time of the current DirectoryIterator item
+* ::getBasename - Get base name of current DirectoryIterator item.
+* ::getCTime - Get inode change time of the current DirectoryIterator item
+* ::getExtension - Gets the file extension
+* ::getFilename - Return file name of current DirectoryIterator item.
+* ::getGroup - Get group for the current DirectoryIterator item
+
+
+* ::getInode - Get inode for the current DirectoryIterator item
+* ::getMTime - Get last modification time of current DirectoryIterator item
+* ::getOwner - Get owner of current DirectoryIterator item
+* ::getPath - Get path of current Iterator item without filename
+* ::getPathname - Return path and file name of current DirectoryIterator item
+* ::getPerms - Get the permissions of current DirectoryIterator item
+* ::getSize - Get size of current DirectoryIterator item
+* ::getType - Determine the type of the current DirectoryIterator item
+
+
+* ::isDir - Determine if current DirectoryIterator item is a directory
+* ::isDot - Determine if current DirectoryIterator item is '.' or '..'
+* ::isExecutable - Determine if current DirectoryIterator item is executable
+* ::isFile - Determine if current DirectoryIterator item is a regular file
+* ::isLink - Determine if current DirectoryIterator item is a symbolic link
+* ::isReadable - Determine if current DirectoryIterator item can be read
+* ::isWritable - Determine if current DirectoryIterator item can be written to
+
+
+* ::key - Return the key for the current DirectoryIterator item
+* ::next - Move forward to next DirectoryIterator item
+* ::rewind - Rewind the DirectoryIterator back to the start
+* ::seek - Seek to a DirectoryIterator item
+* ::__toString - Get file name as a string
+* ::valid - Check whether current DirectoryIterator position is a valid file
 
 
 ### EmptyIterator
-asd
+The EmptyIterator class for an empty iterator.
+
 ```
+EmptyIterator implements Iterator
+{
+    /* Methods */
+    public void current ( void )
+    public void key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public void valid ( void )
+}
 ```
 
 
 ### FilesystemIterator
-asd
 ```
+FilesystemIterator extends DirectoryIterator implements SeekableIterator
+{
+    /* Constants */
+    const integer CURRENT_AS_PATHNAME = 32;
+    const integer CURRENT_AS_FILEINFO = 0;
+    const integer CURRENT_AS_SELF = 16;
+    const integer CURRENT_MODE_MASK = 240;
+    const integer KEY_AS_PATHNAME = 0;
+    const integer KEY_AS_FILENAME = 256;
+    const integer FOLLOW_SYMLINKS = 512;
+    const integer KEY_MODE_MASK = 3840;
+    const integer NEW_CURRENT_AND_KEY = 256;
+    const integer SKIP_DOTS = 4096;
+    const integer UNIX_PATHS = 8192;
+    
+    /* Methods */
+    public __construct ( string $path 
+        [, int $flags = FilesystemIterator::KEY_AS_PATHNAME 
+            | FilesystemIterator::CURRENT_AS_FILEINFO 
+            | FilesystemIterator::SKIP_DOTS ] )
+    public mixed current ( void )
+    public int getFlags ( void )
+    public string key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public void setFlags ([ int $flags ] )
+    
+    /* Inherited methods */
+    /* All DirectoryIterator methods */
 ```
+
+
+
+* ::CURRENT_AS_PATHNAME - Makes FilesystemIterator::current() return the pathname.
+* ::CURRENT_AS_FILEINFO - Makes FilesystemIterator::current() return an SplFileInfo instance.
+* ::CURRENT_AS_SELF - Makes FilesystemIterator::current() return $this (the FilesystemIterator).
+* ::CURRENT_MODE_MASK - Masks FilesystemIterator::current()
+* ::KEY_AS_PATHNAME - Makes FilesystemIterator::key() return the pathname.
+* ::KEY_AS_FILENAME - Makes FilesystemIterator::key() return the filename.
+
+
+* ::FOLLOW_SYMLINKS - Makes RecursiveDirectoryIterator::hasChildren() follow symlinks.
+* ::KEY_MODE_MASK - Masks FilesystemIterator::key()
+* ::NEW_CURRENT_AND_KEY - Same as FilesystemIterator::KEY_AS_FILENAME | FilesystemIterator::CURRENT_AS_FILEINFO.
+* ::SKIP_DOTS - Skips dot files (. and ..).
+* ::UNIX_PATHS - Makes paths use Unix-style forward slash irrespective of system default.
+
+
+* ::__construct - Constructs a new filesystem iterator
+* ::current - The current file
+* ::getFlags - Get the handling flags
+* ::key - Retrieve the key for the current file
+* ::next - Move to the next file
+* ::rewind - Rewinds back to the beginning
+* ::setFlags - Sets handling flags
 
 
 ### FilterIterator
-asd
+This abstract iterator filters out unwanted values. This class should be extended to implement custom iterator filters
+
 ```
+abstract FilterIterator extends IteratorIterator implements OuterIterator
+{
+    /* Methods */
+    public abstract bool accept ( void )
+    public __construct ( Iterator $iterator )
+    public mixed current ( void )
+    public Iterator getInnerIterator ( void )
+    public mixed key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public bool valid ( void )
+}
 ```
+
+* FilterIterator::accept() must be implemented in the subclass.
+
+
+* ::accept - Check whether the current element of the iterator is acceptable
+* ::__construct - Construct a filterIterator
+* ::current - Get the current element value
+* ::getInnerIterator - Get the inner iterator
+* ::key - Get the current key
+* ::next - Move the iterator forward
+* ::rewind - Rewind the iterator
+* ::valid - Check whether the current element is valid
 
 
 ### GlobIterator
-asd
+Iterates through a file system in a similar fashion to glob().
+
 ```
+GlobIterator extends FilesystemIterator implements SeekableIterator, Countable
+{
+    /* Methods */
+    public __construct ( string $path 
+        [, int $flags = FilesystemIterator::KEY_AS_PATHNAME 
+            | FilesystemIterator::CURRENT_AS_FILEINFO ] )
+    public int count ( void )
+    
+    /* Inherited methods */
+    /* All FilesystemIterator methods */
+}
 ```
+
+* ::__construct - Construct a directory using glob
+* ::count - Get the number of directories and files
 
 
 ### InfiniteIterator
-asd
+The InfiniteIterator allows one to infinitely iterate over an iterator without having to manually rewind the iterator upon reaching its end.
+
 ```
+InfiniteIterator extends IteratorIterator implements OuterIterator {
+    /* Methods */
+    public __construct ( Iterator $iterator )
+    public void next ( void )
+    
+    /* Inherited methods */
+    /* All IteratorIterator methods */
 ```
+
+* ::__construct - Constructs an InfiniteIterator
+* ::next - Moves the inner Iterator forward or rewinds it
 
 
 ### IteratorIterator
-asd
+This iterator wrapper allows the conversion of anything that is Traversable into an Iterator.
+
 ```
+IteratorIterator implements OuterIterator
+{
+    /* Methods */
+    public __construct ( Traversable $iterator )
+    public mixed current ( void )
+    public Traversable getInnerIterator ( void )
+    public scalar key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public bool valid ( void )
+}
 ```
+
+* This class permits access to methods of the inner iterator via the __call magic method. 
+
+
+* ::__construct - Create an iterator from anything that is traversable
+* ::current - Get the current value
+* ::getInnerIterator - Get the inner iterator
+* ::key - Get the key of the current element
+* ::next - Forward to the next element
+* ::rewind - Rewind to the first element
+* ::valid - Checks if the iterator is valid
 
 
 ### LimitIterator
-asd
+The LimitIterator class allows iteration over a limited subset of items in an Iterator.
+
 ```
+LimitIterator extends IteratorIterator implements OuterIterator
+{
+    /* Methods */
+    public __construct ( Iterator $iterator 
+        [, int $offset = 0 [, int $count = -1 ]] )
+    public mixed current ( void )
+    public Iterator getInnerIterator ( void )
+    public int getPosition ( void )
+    public mixed key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public int seek ( int $position )
+    public bool valid ( void )
+}
 ```
+
+
+* ::__construct - Construct a LimitIterator
+* ::current - Get current element
+* ::getInnerIterator - Get inner iterator
+* ::getPosition - Return the current position
+* ::key - Get current key
+* ::next - Move the iterator forward
+* ::rewind - Rewind the iterator to the specified starting offset
+* ::seek - Seek to the given position
+* ::valid - Check whether the current element is valid
 
 
 ### MultipleIterator
-asd
+An Iterator that sequentially iterates over all attached iterators
+
 ```
+MultipleIterator implements Iterator
+{
+    /* Constants */
+    const integer MIT_NEED_ANY = 0;
+    const integer MIT_NEED_ALL = 1;
+    const integer MIT_KEYS_NUMERIC = 0;
+    const integer MIT_KEYS_ASSOC = 2;
+    
+    /* Methods */
+    public __construct ([ int $flags = MultipleIterator::MIT_NEED_ALL|MultipleIterator::MIT_KEYS_NUMERIC ] )
+    public void attachIterator ( Iterator $iterator [, string $infos ] )
+    public void containsIterator ( Iterator $iterator )
+    public void countIterators ( void )
+    public array current ( void )
+    public void detachIterator ( Iterator $iterator )
+    public void getFlags ( void )
+    public array key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public void setFlags ( int $flags )
+    public void valid ( void )
+}
 ```
+
+
+* ::MIT_NEED_ANY - Do not require all sub iterators to be valid in iteration.
+* ::MIT_NEED_ALL - Require all sub iterators to be valid in iteration.
+* ::MIT_KEYS_NUMERIC - Keys are created from the sub iterators position.
+* ::MIT_KEYS_ASSOC - Keys are created from sub iterators associated information.
+
+
+* ::attachIterator - Attaches iterator information
+* ::__construct - Constructs a new MultipleIterator
+* ::containsIterator - Checks if an iterator is attached
+* ::countIterators - Gets the number of attached iterator instances
+* ::current - Gets the registered iterator instances
+* ::detachIterator - Detaches an iterator
+* ::getFlags - Gets the flag information
+* ::key - Gets the registered iterator instances
+* ::next - Moves all attached iterator instances forward
+* ::rewind - Rewinds all attached iterator instances
+* ::setFlags - Sets flags
+* ::valid - Checks the validity of sub iterators
 
 
 ### NoRewindIterator
-asd
+This iterator cannot be rewound.
+
 ```
+NoRewindIterator extends IteratorIterator
+{
+    /* Methods */
+    public __construct ( Iterator $iterator )
+    public mixed current ( void )
+    public iterator getInnerIterator ( void )
+    public mixed key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    public bool valid ( void )
+    
+    /* Inherited methods */
+    /* All IteratorIterator methods */
+}
 ```
+
+
+* ::__construct - Construct a NoRewindIterator
+* ::current - Get the current value
+* ::getInnerIterator - Get the inner iterator
+* ::key - Get the current key
+* ::next - Forward to the next element
+* ::rewind - Prevents the rewind operation on the inner iterator.
+* ::valid - Validates the iterator
 
 
 ### ParentIterator
-asd
+This extended FilterIterator allows a recursive iteration using RecursiveIteratorIterator that only shows those elements which have children.
+
 ```
+ParentIterator extends RecursiveFilterIterator implements RecursiveIterator, OuterIterator
+{
+    /* Methods */
+    public bool accept ( void )
+    public __construct ( RecursiveIterator $iterator )
+    public ParentIterator getChildren ( void )
+    public bool hasChildren ( void )
+    public void next ( void )
+    public void rewind ( void )
+}
 ```
+
+
+* ::accept - Determines acceptability
+* ::__construct - Constructs a ParentIterator
+* ::getChildren - Return the inner iterator's children contained in a ParentIterator
+* ::hasChildren - Check whether the inner iterator's current element has children
+* ::next - Move the iterator forward
+* ::rewind - Rewind the iterator
 
 
 ### RecursiveArrayIterator
-asd
+Same as ArrayIterator and additionally it is possible to iterate over the current iterator entry.
+
 ```
+RecursiveArrayIterator extends ArrayIterator implements RecursiveIterator
+{
+    /* Methods */
+    public RecursiveArrayIterator getChildren ( void )
+    public bool hasChildren ( void )
+    
+    /* Inherited methods */
+    /* All ArrayIterator methods */
 ```
+
+* ::getChildren - Returns an iterator for the current entry if it is an array or an object.
+* ::hasChildren - Returns whether current entry is an array or an object.
 
 
 ### RecursiveCachingIterator
-asd
+Same as CachingIterator and additionally it is possible to iterate over the current iterator entry.
 ```
+RecursiveCachingIterator extends CachingIterator implements Countable, ArrayAccess, OuterIterator, RecursiveIterator
+{
+    /* Methods */
+    public __construct ( Iterator $iterator 
+        [, string $flags = self::CALL_TOSTRING ] )
+    public RecursiveCachingIterator getChildren ( void )
+    public bool hasChildren ( void )
+    
+    /* Inherited methods */
+    /* All CachingIterator methods */
 ```
+
+* ::__construct - Construct
+* ::getChildren - Return the inner iterator's children as a RecursiveCachingIterator
+* ::hasChildren - Check whether the current element of the inner iterator has children
 
 
 ### RecursiveCallbackFilterIterator
-asd
+The callback function should return TRUE if the current iterator item has children 
+and should have a normal filter condition, such as a file size or extension check.
+
 ```
+RecursiveCallbackFilterIterator extends CallbackFilterIterator implements OuterIterator, RecursiveIterator
+{
+    /* Methods */
+    public __construct ( RecursiveIterator $iterator, string $callback )
+    public RecursiveCallbackFilterIterator getChildren ( void )
+    public void hasChildren ( void )
+    
+    /* Inherited methods */
+    public string CallbackFilterIterator::accept ( void )
+}
 ```
+
+
+* ::__construct - Create a RecursiveCallbackFilterIterator from a RecursiveIterator
+* ::getChildren - Return the inner iterator's children contained in a RecursiveCallbackFilterIterator
+* ::hasChildren - Check whether the inner iterator's current element has children
 
 
 ### RecursiveDirectoryIterator
-asd
+The RecursiveDirectoryIterator provides an interface for iterating recursively over filesystem directories.
+
 ```
+RecursiveDirectoryIterator extends FilesystemIterator implements SeekableIterator, RecursiveIterator
+{
+    /* Methods */
+    public __construct ( string $path [, int $flags = FilesystemIterator::KEY_AS_PATHNAME | FilesystemIterator::CURRENT_AS_FILEINFO ] )
+    public mixed getChildren ( void )
+    public string getSubPath ( void )
+    public string getSubPathname ( void )
+    public bool hasChildren ([ bool $allow_links = false ] )
+    public string key ( void )
+    public void next ( void )
+    public void rewind ( void )
+    
+    /* Inherited methods */
+    /* All FilesystemIterator methods */
+}
 ```
+
+
+* ::__construct - Constructs a RecursiveDirectoryIterator
+* ::getChildren - Returns an iterator for the current entry if it is a directory
+* ::getSubPath - Get sub path
+* ::getSubPathname - Get sub path and name
+* ::hasChildren - Returns whether current entry is a directory and not '.' or '..'
+* ::key - Return path and filename of current dir entry
+* ::next - Move to next entry
+* ::rewind - Rewind dir back to the start
 
 
 ### RecursiveFilterIterator
-asd
+This abstract iterator filters out unwanted values for a RecursiveIterator. This class should be extended to implement custom filters.
+
 ```
+abstract RecursiveFilterIterator extends FilterIterator implements OuterIterator , RecursiveIterator
+{
+    /* Methods */
+    public __construct ( RecursiveIterator $iterator )
+    public RecursiveFilterIterator getChildren ( void )
+    public bool hasChildren ( void )
+    
+    /* Inherited methods */
+    /* All FilterIterator methods */
+}
 ```
+
+* The RecursiveFilterIterator::accept() must be implemented in the subclass.
+
+
+* ::__construct - Create a RecursiveFilterIterator from a RecursiveIterator
+* ::getChildren - Return the inner iterator's children contained in a RecursiveFilterIterator
+* ::hasChildren - Check whether the inner iterator's current element has children
 
 
 ### RecursiveIteratorIterator
-asd
+Can be used to iterate through recursive iterators.
+
 ```
+RecursiveIteratorIterator implements OuterIterator
+{
+    /* Constants */
+    const integer LEAVES_ONLY = 0;
+    const integer SELF_FIRST = 1;
+    const integer CHILD_FIRST = 2;
+    const integer CATCH_GET_CHILD = 16;
+    
+    /* Methods */
+    public void beginChildren ( void )
+    public void beginIteration ( void )
+    public RecursiveIterator callGetChildren ( void )
+    public bool callHasChildren ( void )
+    public __construct ( Traversable $iterator 
+        [, int $mode = RecursiveIteratorIterator::LEAVES_ONLY [, int $flags = 0 ]] )
+    public mixed current ( void )
+    public void endChildren ( void )
+    public void endIteration ( void )
+    public int getDepth ( void )
+    public iterator getInnerIterator ( void )
+    public mixed getMaxDepth ( void )
+    public RecursiveIterator getSubIterator ([ int $level ] )
+    public mixed key ( void )
+    public void next ( void )
+    public void nextElement ( void )
+    public void rewind ( void )
+    public void setMaxDepth ([ string $max_depth = -1 ] )
+    public bool valid ( void )
+    
+    /* Inherited methods */
+    public Iterator OuterIterator::getInnerIterator ( void )
+}
 ```
+
+
+* ::beginChildren - Begin children
+* ::beginIteration - Begin Iteration
+* ::callGetChildren - Get children
+* ::callHasChildren - Has children
+* ::__construct - Construct a RecursiveIteratorIterator
+* ::current - Access the current element value
+* ::endChildren - End children
+* ::endIteration - End Iteration
+* ::getDepth - Get the current depth of the recursive iteration
+
+
+* ::getInnerIterator - Get inner iterator
+* ::getMaxDepth - Get max depth
+* ::getSubIterator - The current active sub iterator
+* ::key - Access the current key
+* ::next - Move forward to the next element
+* ::nextElement - Next element
+* ::rewind - Rewind the iterator to the first element of the top level inner iterator
+* ::setMaxDepth - Set max depth
+* ::valid - Check whether the current position is valid
 
 
 ### RecursiveRegexIterator
-asd
+This recursive iterator can filter another recursive iterator via a regular expression.
+
 ```
+RecursiveRegexIterator extends RegexIterator implements RecursiveIterator
+{
+    /* Methods */
+    public __construct ( RecursiveIterator $iterator , string $regex 
+        [, int $mode = self::MATCH 
+        [, int $flags = 0 [, int $preg_flags = 0 ]]] )
+    public RecursiveRegexIterator getChildren ( void )
+    public bool hasChildren ( void )
+    
+    /* Inherited methods */
+    /* All RecursiveIterator methods */
+}
 ```
+
+
+* ::__construct - Creates a new RecursiveRegexIterator.
+* ::getChildren - Returns an iterator for the current entry.
+* ::hasChildren - Returns whether an iterator can be obtained for the current entry.
 
 
 ### RecursiveTreeIterator
-asd
+Allows iterating over a RecursiveIterator to generate an ASCII graphic tree.
+
 ```
+RecursiveTreeIterator extends RecursiveIteratorIterator implements OuterIterator
+{
+    /* Constants */
+    const integer BYPASS_CURRENT = 4 ;
+    const integer BYPASS_KEY = 8 ;
+    const integer PREFIX_LEFT = 0 ;
+    const integer PREFIX_MID_HAS_NEXT = 1 ;
+    const integer PREFIX_MID_LAST = 2 ;
+    const integer PREFIX_END_HAS_NEXT = 3 ;
+    const integer PREFIX_END_LAST = 4 ;
+    const integer PREFIX_RIGHT = 5 ;
+    
+    /* Methods */
+    public void beginChildren ( void )
+    public RecursiveIterator beginIteration ( void )
+    public RecursiveIterator callGetChildren ( void )
+    public bool callHasChildren ( void )
+    public __construct ( RecursiveIterator|IteratorAggregate $it 
+        [, int $flags = RecursiveTreeIterator::BYPASS_KEY 
+        [, int $cit_flags = CachingIterator::CATCH_GET_CHILD 
+        [, int $mode = RecursiveIteratorIterator::SELF_FIRST ]]] )
+    public string current ( void )
+    public void endChildren ( void )
+    public void endIteration ( void )
+    public string getEntry ( void )
+    public void getPostfix ( void )
+    public string getPrefix ( void )
+    public string key ( void )
+    public void next ( void )
+    public void nextElement ( void )
+    public void rewind ( void )
+    public void setPrefixPart ( int $part , string $value )
+    public bool valid ( void )
+    
+    /* Inherited methods */
+    /* All RecursiveIteratorIterator methods */
 ```
+
+
+* ::beginChildren — Begin children
+* ::beginIteration — Begin iteration
+* ::callGetChildren — Get children
+* ::callHasChildren — Has children
+* ::__construct — Construct a RecursiveTreeIterator
+* ::current — Get current element
+* ::endChildren — End children
+* ::endIteration — End iteration
+
+
+* ::getEntry — Get current entry
+* ::getPostfix — Get the postfix
+* ::getPrefix — Get the prefix
+* ::key — Get the key of the current element
+* ::next — Move to next element
+* ::nextElement — Next element
+* ::rewind — Rewind iterator
+* ::setPrefixPart — Set a part of the prefix
+* ::valid — Check validity
 
 
 ### RegexIterator
-asd
+This iterator can be used to filter another iterator based on a regular expression.
+
 ```
+RegexIterator extends FilterIterator
+{
+    /* Constants */
+    const integer MATCH = 0 ;
+    const integer GET_MATCH = 1 ;
+    const integer ALL_MATCHES = 2 ;
+    const integer SPLIT = 3 ;
+    const integer REPLACE = 4 ;
+    const integer USE_KEY = 1 ;
+    
+    /* Methods */
+    public __construct ( Iterator $iterator , string $regex 
+        [, int $mode = self::MATCH [, int $flags = 0 
+        [, int $preg_flags = 0 ]]] )
+    public bool accept ( void )
+    public int getFlags ( void )
+    public int getMode ( void )
+    public int getPregFlags ( void )
+    public string getRegex ( void )
+    public void setFlags ( int $flags )
+    public void setMode ( int $mode )
+    public void setPregFlags ( int $preg_flags )
+    
+    /* Inherited methods */
+    /* All FilterIterator methods */
+}
 ```
+
+
+* ::ALL_MATCHES - Return all matches for the current entry (see preg_match_all()).
+* ::GET_MATCH - Return the first match for the current entry (see preg_match()).
+* ::MATCH - Only execute match (filter) for the current entry (see preg_match()).
+* ::REPLACE - Replace the current entry (see preg_replace(); Not fully implemented yet)
+* ::SPLIT - Returns the split values for the current entry (see preg_split()).
+* ::USE_KEY - Special flag: Match the entry key instead of the entry value.
+
+
+* ::accept — Get accept status
+* ::__construct — Create a new RegexIterator
+* ::getFlags — Get flags
+* ::getMode — Returns operation mode.
+* ::getPregFlags — Returns the regular expression flags.
+* ::getRegex — Returns current regular expression
+* ::setFlags — Sets the flags.
+* ::setMode — Sets the operation mode.
+* ::setPregFlags — Sets the regular expression flags.
 
 ***
 
@@ -1076,13 +1820,13 @@ The SplFileInfo class offers a high-level object oriented interface to informati
 The SplFileObject class offers an object oriented interface for a file.
 
 ```
- SplFileObject extends SplFileInfo implements RecursiveIterator , SeekableIterator
+ SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIterator
  {
     /* Constants */
-    const integer DROP_NEW_LINE = 1 ;
-    const integer READ_AHEAD = 2 ;
-    const integer SKIP_EMPTY = 4 ;
-    const integer READ_CSV = 8 ;
+    const integer DROP_NEW_LINE = 1;
+    const integer READ_AHEAD = 2;
+    const integer SKIP_EMPTY = 4;
+    const integer READ_CSV = 8;
     
     /* Methods */
     public string|array current(void)
@@ -1177,7 +1921,7 @@ The SplFileObject class offers an object oriented interface for a file.
 The SplTempFileObject class offers an object oriented interface for a temporary file.
 
 ```
-SplTempFileObject extends SplFileObject implements SeekableIterator , RecursiveIterator
+SplTempFileObject extends SplFileObject implements SeekableIterator, RecursiveIterator
 {
     /* Methods */
     public __construct([ int $max_memory ])
@@ -1198,11 +1942,11 @@ SplTempFileObject extends SplFileObject implements SeekableIterator , RecursiveI
 This class allows objects to work as arrays.
 
 ```
-ArrayObject implements IteratorAggregate , ArrayAccess , Serializable , Countable
+ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Countable
 {
     /* Constants */
-    const integer STD_PROP_LIST = 1 ;
-    const integer ARRAY_AS_PROPS = 2 ;
+    const integer STD_PROP_LIST = 1;
+    const integer ARRAY_AS_PROPS = 2;
     
     /* Methods */
     public __construct([ mixed $input = [] [, int $flags = 0 
@@ -1220,7 +1964,7 @@ ArrayObject implements IteratorAggregate , ArrayAccess , Serializable , Countabl
     public void natsort(void)
     public bool offsetExists(mixed $index)
     public mixed offsetGet(mixed $index)
-    public void offsetSet(mixed $index , mixed $newval)
+    public void offsetSet(mixed $index, mixed $newval)
     public void offsetUnset(mixed $index)
     public string serialize(void)
     public void setFlags(int $flags)
@@ -1232,8 +1976,8 @@ ArrayObject implements IteratorAggregate , ArrayAccess , Serializable , Countabl
 ```
 
 
-* ::STD_PROP_LIST - Properties of the object have their normal functionality when accessed as list (var_dump, foreach, etc.).
-* ::ARRAY_AS_PROPS - Entries can be accessed as properties (read and write).
+* ::STD_PROP_LIST - Properties of the object have their normal functionality when accessed as list(var_dump, foreach, etc.).
+* ::ARRAY_AS_PROPS - Entries can be accessed as properties(read and write).
 
 
 * ::append - Appends the value
