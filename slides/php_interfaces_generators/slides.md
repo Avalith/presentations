@@ -1,4 +1,4 @@
-#PHP Interfaces, Generators & other shit
+#PHP Generators & Standard PHP Library (SPL) shit
 
 ***
 
@@ -1275,7 +1275,7 @@ SplObserver
 }
 ```
 
-* ::update — Receive update from subject
+* ::update - Receive update from subject
 
 
 ### SplSubject
@@ -1291,9 +1291,30 @@ SplSubject
 }
 ```
 
-* ::attach — Attach an SplObserver
-* ::detach — Detach an observer
-* ::notify — Notify an observer
+* ::attach - Attach an SplObserver
+* ::detach - Detach an observer
+* ::notify - Notify an observer
+
+***
+
+## SPL Functions
+
+* class_implements - Return the interfaces which are implemented by the given class or interface
+* class_parents - Return the parent classes of the given class
+* class_uses - Return the traits used by the given class
+* iterator_apply - Call a function for every element in an iterator
+* iterator_count - Count the elements in an iterator
+* iterator_to_array - Copy the iterator into an array
+* spl_autoload_call - Try all registered __autoload() function to load the requested class
+
+
+* spl_autoload_extensions - Register and return default file extensions for spl_autoload
+* spl_autoload_functions - Return all registered __autoload() functions
+* spl_autoload_register - Register given function as __autoload() implementation
+* spl_autoload_unregister - Unregister given function as __autoload() implementation
+* spl_autoload - Default implementation for __autoload()
+* spl_classes - Return available SPL classes
+* spl_object_hash - Return hash id for given object
 
 ***
 
