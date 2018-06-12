@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>reveal.js – The HTML Presentation Framework</title>
+	<title>Presentation - Alexander Ivanov</title>
 
 	<meta name="description" content="">
 	<meta name="author" content="Alexander Ivanov - Karamfil">
@@ -14,11 +14,13 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-	<link rel="stylesheet" href="css/reveal.min.css">
-	<link rel="stylesheet" href="css/theme/avalith.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<!-- <link rel="stylesheet" href="css/theme/avalith.css"> -->
+	<link rel="stylesheet" href="css/theme/white.css">
+	<link rel="stylesheet" href="css-theme/shutterfly.css">
 
 	<!-- For syntax highlighting -->
-	<link rel="stylesheet" href="lib/css/sunburst.css">
+	<!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
 
 	<!-- Printing and PDF exports -->
 	<script>
@@ -38,17 +40,17 @@
 
 <div class="reveal">
 	<div class="slides">
-		<section data-markdown="slides/slides.md" data-separator="^\n\*\*\*\n\n" data-separator-vertical="^\n\n"></section>
+		<section data-markdown="slides/slides.md" data-separator="^\*\*\*$" data-separator-vertical="^---$"></section>
 		<script>
 			var current_slide_file = location.search.substr(1);
-			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = 'slides/' + current_slide_file + '/slides.md'; }
+			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = '/slides/' + current_slide_file + '/slides.md'; }
 		</script>
 	</div>
 	
 </div>
 
 <script src="lib/js/head.min.js"></script>
-<script src="js/reveal.min.js"></script>
+<script src="js/reveal.js"></script>
 
 <script>
 	// https://github.com/hakimel/reveal.js#configuration
