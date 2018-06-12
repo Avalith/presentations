@@ -42,7 +42,7 @@
 	<div class="slides">
 		<section data-markdown="slides/slides.md" data-separator="^\*\*\*$" data-separator-vertical="^---$"></section>
 		<script>
-			var current_slide_file = location.search.substr(1);
+			var current_slide_file = location.search.substr(1).split('&')[0];
 			if(current_slide_file){ document.getElementsByTagName('section')[0].dataset.markdown = '/slides/' + current_slide_file + '/slides.md'; }
 		</script>
 	</div>
